@@ -8,6 +8,7 @@ import ProfileWindow from './src/ProfileWindow/ProfileWindow';
 import MenuWindow from './src/MenuWindow/MenuWindow';
 import { storeContext } from './src/store';
 import { Observer, observer, useObserver } from 'mobx-react-lite'
+import OrderView from './src/OrderWindow/OrderView';
 
 export default function App() {
 
@@ -20,6 +21,7 @@ export default function App() {
         {/* {store.component === 'Cart' && <Cart/>} */}
         {/* <ProfileWindow/> */}
         {/* <MenuWindow/> */}
+        <OrderView/>
         <Footer/>
       </View> 
     }</Observer>
@@ -30,6 +32,5 @@ const { container } = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 20,
-    marginHorizontal: 20
   }
 });
