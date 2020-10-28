@@ -45,13 +45,13 @@ export default function MenuWindow() {
 
 const { container, stocks, notes, cards } = StyleSheet.create({
     container: {
-        width: 371,
+        flex: 1,
         marginHorizontal: 20,
     },
     stocks: {
         flexDirection: 'row',
         marginTop: 12,
-        height: 109,
+        height: 115,
     },
     notes: {
         marginTop: 20,
@@ -60,6 +60,5 @@ const { container, stocks, notes, cards } = StyleSheet.create({
         marginBottom: 15,
     },
     cards: {
-        marginBottom: 70,
     }
 })

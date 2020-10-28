@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, TextInput } from 'react-native'
+import { View, Text, StyleSheet, TextInput, Keyboard } from 'react-native'
+
 
 export default function Field({ title }: any) {
     const [field, setField] = useState('')
+    const titleType = ['Кв/офис', 'Домофон', 'Подъезд', 'Этаж']
     return (
         <View style={ container }>
             <Text style={fieldTitle}>{title}</Text>
@@ -10,6 +12,8 @@ export default function Field({ title }: any) {
             style={ fieldInput }
             onChangeText={(text: string) => setField(text)}
             value={ field }
+            keyboardType={titleType.includes(title) ? 'numeric' : 'default'}
+            autoCorrect={false}
             />
         </View>
     )

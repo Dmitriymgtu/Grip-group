@@ -26,9 +26,17 @@ export default function DishCard() {
               <View style={dishRow}>
                 <Note style={dishPrice} title='300 р.'/>
                 <View style={dishCounter}>
-                  <TouchableOpacity onPress={() => setCounter(prev => prev - 1)} disabled={ counter <= 0 }><Text style={dishIncrease}>-</Text></TouchableOpacity>
-                  <Text>{counter}</Text>
-                  <TouchableOpacity onPress={() => setCounter(prev => prev + 1)}><Text style={dishIncrease}>+</Text></TouchableOpacity> 
+                  <View style={dishIncrease}>
+                    <TouchableOpacity onPress={() => setCounter(prev => prev - 1)} disabled={ counter <= 0 }>
+                      <Text style={textCenter}>-</Text>
+                    </TouchableOpacity>
+                  </View>
+                  <Text style={font19}>{counter}</Text>
+                  <View style={dishIncrease}>
+                    <TouchableOpacity onPress={() => setCounter(prev => prev + 1)}>
+                      <Text style={textCenter}>+</Text>
+                    </TouchableOpacity>
+                  </View>
                 </View>
               </View>
             </View>
@@ -36,11 +44,10 @@ export default function DishCard() {
     );
 }
 
-const { dish, dishImage, dishInfo, dishTitle, dishComposition, dishRow, dishPrice, dishIncrease, dishCounter } = StyleSheet.create({
+const { dish, dishImage, dishInfo, dishTitle, dishComposition, dishRow, dishPrice, font19, dishIncrease, textCenter, dishCounter } = StyleSheet.create({
     dish: {
       marginBottom: 18,
       height: 109,
-      width: 371,
       flexDirection: 'row'
     },
     dishImage: {
@@ -51,7 +58,7 @@ const { dish, dishImage, dishInfo, dishTitle, dishComposition, dishRow, dishPric
     },
     dishInfo: {
       marginLeft: 14,
-      width: 248,
+      flex: 1
     },
     dishTitle: {
       fontSize: 16,
@@ -69,18 +76,24 @@ const { dish, dishImage, dishInfo, dishTitle, dishComposition, dishRow, dishPric
     },
     dishPrice: {
     },
+    font19: {
+      fontSize: 19, 
+    },
     dishIncrease: {
-      height: 25,
-      width: 25,
-      borderRadius: 15,
-      textAlign: 'center',
-      paddingTop: 2,
+      height: 30,
+      width: 30,
+      borderRadius: 20,
+      fontSize: 19,
       backgroundColor: '#E8E8E8' 
+    },
+    textCenter: {
+      textAlign: 'center',
+      paddingTop: 5,
     },
     dishCounter: {
       flexDirection: 'row',
-      width: 80,
-      justifyContent: 'space-around',
+      width: 105,
+      justifyContent: 'space-between',
       alignItems: 'center'
     }
   });

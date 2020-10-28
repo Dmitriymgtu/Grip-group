@@ -30,7 +30,6 @@ export default function Main() {
 
 const { scroll } = StyleSheet.create({
   scroll: {
-    marginBottom: 50,
     marginHorizontal: 20
   }
 });

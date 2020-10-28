@@ -22,7 +22,7 @@ export default function OrderView() {
             <Field title='Время доставки'/>
             <Field title='Адрес доставки'/>
             <View style={horizontal}>
-                { horizontalFields.map(value => <Field key={value.id} title={value.title}/>)}
+                { horizontalFields.map(value => <Field key={value.id} title={value.title} />)}
             </View>
             <Field title='Комментарий к заказу'/>
             <Field title='Промокод'/>

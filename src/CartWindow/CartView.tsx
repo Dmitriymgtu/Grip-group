@@ -20,37 +20,60 @@ export default function CartView() {
 
     return (
       <View style={container}>
-          <TouchableOpacity>
-              <Text style={clearBottom}>Очистить</Text>
-          </TouchableOpacity>
-          <Text style={title}>Корзина</Text>
-          <ScrollView>
-            <CartCard/>
-            <CartCard/>
-            <CartCard/>
-            <CartCard/>
-            <CartCard/>
-          </ScrollView>
-          <Text style={total}>Итого:</Text>
+            <TouchableOpacity>
+                <Text style={clearBottom}>Очистить</Text>
+            </TouchableOpacity>
+            <Text style={title}>Корзина</Text>
+            <ScrollView style={cards} showsVerticalScrollIndicator={ false } >
+                <CartCard/>
+                <CartCard/>
+                <CartCard/>
+                <CartCard/>
+                <CartCard/>
+            </ScrollView>
+            <Text style={total}>Итого: 0 р.</Text>
       </View>
     );
 }
 
-const { container, clearBottom, title, total } = StyleSheet.create({
+const { container, clearBottom, title, cards, total } = StyleSheet.create({
     container: {
-
+        marginHorizontal: 20
     },
     clearBottom: {
-    fontFamily: "Montserrat",
-    fontWeight: "300",
-    fontSize: 16,
-    lineHeight: 20,
-    alignItems: 'flex-end'
+        fontFamily: "Montserrat",
+        fontWeight: "300",
+        fontSize: 18,
+        lineHeight: 20,
+        marginTop: 17,
+        textAlign: 'right'
+    },
+    cards: {
+        height: 380,
+        // elevation: 10,
+        // shadowColor: 'silver',
+        // shadowRadius: 100,
+        // shadowOpacity: 0.8,
+        // // shadowColor: "#000",
+        // shadowOffset: {
+        //     width: 0,
+        //     height: 5,
+        // },
+        // shadowOpacity: 20,
+        // shadowRadius: 1.41,
+        // elevation: 10,
     },
     title: {
-        
+        fontFamily: "Montserrat",
+        fontWeight: "400",
+        fontSize: 35,   
+        marginBottom: 30,
     },
     total: {
-
+        fontFamily: "Montserrat",
+        fontWeight: "500",
+        fontSize: 23,   
+        marginTop: 31,
+        textAlign: 'right'
     },
   });

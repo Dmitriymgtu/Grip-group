@@ -9,6 +9,7 @@ import MenuWindow from './src/MenuWindow/MenuWindow';
 import { storeContext } from './src/store';
 import { Observer, observer, useObserver } from 'mobx-react-lite'
 import OrderView from './src/OrderWindow/OrderView';
+import CartView from './src/CartWindow/CartView';
 
 export default function App() {
 
@@ -19,18 +20,28 @@ export default function App() {
     <Observer>{ () => <View style={ container }>
         {/* {store.componentName === 'Main' && <Main/>} */}
         {/* {store.component === 'Cart' && <Cart/>} */}
-        {/* <ProfileWindow/> */}
+        {/* <Main/> */}
+        <ProfileWindow/>
         {/* <MenuWindow/> */}
-        <OrderView/>
-        <Footer/>
+        {/* <CartView/> */}
+        <View style={footer}>
+          <Footer/>
+        </View>
       </View> 
     }</Observer>
   );
 }
 
-const { container } = StyleSheet.create({
+const { container, footer } = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 20,
+    justifyContent: 'space-between'
+  },
+  footer: {
+    // position: "absolute",
+    // bottom: 0,
+    // left: 0,
+    // right: 0,
   }
 });

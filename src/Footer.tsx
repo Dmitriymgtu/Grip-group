@@ -48,10 +48,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 20,
     justifyContent: "space-between",
-    position: "absolute",
-    bottom: 0,
     height: 60,
-    width: 411,
     backgroundColor: 'white',
     borderTopWidth: 1,
     borderTopColor: '#716D6D'

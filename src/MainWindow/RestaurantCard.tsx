@@ -37,7 +37,6 @@ const { card, cardImage, cardTitle, cardData, cardTime, cardCoast } = StyleSheet
   card: {
     marginBottom: 17,
     height: 180,
-    width: 371,
     borderRadius: 25,
     borderColor: 'black',
     borderWidth: 1,

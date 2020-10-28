@@ -22,32 +22,35 @@ export default function CartCard() {
         <Image source={require('../../assets/myIcons/pazzo.jpg')} style={dishImage}/>
         <View style={dishInfo}>
           <View style={dishTitle}>
-              <Text>
+              <Text style={font16}>
                   Заголовок блюда
               </Text>
-              <Text>
+              <Text style={font16}>
                   700 р.
               </Text>
           </View>
           <View style={dishCounter}>
-            <TouchableOpacity onPress={() => setCounter(prev => prev - 1)} disabled={ counter <= 0 }>
-              <Text style={dishIncrease}>-</Text>
+            <View style={dishIncrease}>
+              <TouchableOpacity onPress={() => setCounter(prev => prev - 1)} disabled={ counter <= 0 }>
+                <Text style={textCenter}>-</Text>
               </TouchableOpacity>
-            <Text>{counter}</Text>
-            <TouchableOpacity onPress={() => setCounter(prev => prev + 1)}>
-              <Text style={dishIncrease}>+</Text>
-              </TouchableOpacity> 
+            </View>
+            <Text style={font19}>{counter}</Text>
+            <View style={dishIncrease}>
+              <TouchableOpacity onPress={() => setCounter(prev => prev + 1)}>
+                <Text style={textCenter}>+</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>
     );
 }
 
-const { dish, dishImage, dishInfo, dishTitle, dishIncrease, dishCounter } = StyleSheet.create({
+const { dish, dishImage, dishInfo, dishTitle, font16, textCenter, dishIncrease, font19, dishCounter } = StyleSheet.create({
     dish: {
       marginBottom: 20,
       height: 80,
-      width: 371,
       flexDirection: 'row'
     },
     dishImage: {
@@ -58,7 +61,7 @@ const { dish, dishImage, dishInfo, dishTitle, dishIncrease, dishCounter } = Styl
     },
     dishInfo: {
       marginLeft: 26,
-      width: 265,
+      flex: 1,
     },
     dishTitle: {
       fontSize: 16,
@@ -67,13 +70,22 @@ const { dish, dishImage, dishInfo, dishTitle, dishIncrease, dishCounter } = Styl
       justifyContent: 'space-between',
       fontFamily: 'Montserrat'
     },
+    font16: {
+      fontSize: 16, 
+    },
     dishIncrease: {
-      height: 35,
-      width: 35,
-      borderRadius: 50,
-      textAlign: 'center',
-      paddingTop: 2,
+      height: 30,
+      width: 30,
+      borderRadius: 20,
+      fontSize: 19,
       backgroundColor: '#E8E8E8' 
+    },
+    textCenter: {
+      textAlign: 'center',
+      paddingTop: 5,
+    },
+    font19: {
+      fontSize: 19,
     },
     dishCounter: {
       flexDirection: 'row',
