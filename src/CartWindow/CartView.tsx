@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Image, StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
-import Note from '../Note'
 import CartCard from './CartCard';
 import { ScrollView } from 'react-native-gesture-handler';
+import { inject, observer } from 'mobx-react';
 
-export default function CartView() {
+function CartView({store}: any) {
     const fetchFonts = () => Font.loadAsync({'Montserrat': require('../../assets/fonts/Montserrat-Regular.ttf')})
 
     const [dataLoaded, setDataLoaded] = useState(false)
@@ -17,6 +17,9 @@ export default function CartView() {
             startAsync={fetchFonts}
             onFinish={() => setDataLoaded(true)}
         />)
+
+    if (store.cart.dishes.length === 0) 
+    return <View style={noDishesContainer}><Text style={noDishes}>Ваша корзина пуста!</Text></View>
 
     return (
       <View style={container}>
@@ -36,9 +39,19 @@ export default function CartView() {
     );
 }
 
-const { container, clearBottom, title, cards, total } = StyleSheet.create({
+const { noDishes, noDishesContainer, container, clearBottom, title, cards, total } = StyleSheet.create({
+    noDishes: {
+        textAlign: 'center',
+        fontFamily: "Montserrat",
+        fontSize: 30,
+        color: '#6D6D6D',
+    },
+    noDishesContainer: {
+        flex: 1,
+        justifyContent: 'center'
+    },
     container: {
-        marginHorizontal: 20
+        marginHorizontal: 20,
     },
     clearBottom: {
         fontFamily: "Montserrat",
@@ -50,18 +63,6 @@ const { container, clearBottom, title, cards, total } = StyleSheet.create({
     },
     cards: {
         height: 380,
-        // elevation: 10,
-        // shadowColor: 'silver',
-        // shadowRadius: 100,
-        // shadowOpacity: 0.8,
-        // // shadowColor: "#000",
-        // shadowOffset: {
-        //     width: 0,
-        //     height: 5,
-        // },
-        // shadowOpacity: 20,
-        // shadowRadius: 1.41,
-        // elevation: 10,
     },
     title: {
         fontFamily: "Montserrat",
@@ -77,3 +78,5 @@ const { container, clearBottom, title, cards, total } = StyleSheet.create({
         textAlign: 'right'
     },
   });
+
+  export default inject('store')(observer(CartView))

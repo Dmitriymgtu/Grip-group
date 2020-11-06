@@ -40,7 +40,7 @@ const { note, sizeNote } = StyleSheet.create({
 
   note: {
     textAlign: 'center',
-    paddingTop: 4,
+    paddingTop: 6,
     paddingHorizontal: 20,
     fontFamily: 'Montserrat'
   },

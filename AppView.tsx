@@ -23,6 +23,7 @@ function AppView(props: any) {
   return(
     <View style={ container }> 
         {store.componentName === 'Main' && <Main/>}
+        {store.componentName === 'Restaurant' && <MenuWindow/>}
         {store.componentName === 'Cart' && <CartView/>}
         {store.componentName === 'Order' && <OrderView/>}
         {store.componentName === 'Profile' && <ProfileWindow/>}

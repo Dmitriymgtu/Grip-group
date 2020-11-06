@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import {inject, observer} from 'mobx-react'
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import Note from '../Note'
 
-export default function RestaurantCard() {
+function RestaurantCard(props: any) {
 
   const fetchFonts = () => Font.loadAsync({'Montserrat': require('../../assets/fonts/Montserrat-Regular.ttf')})
 
@@ -18,8 +19,12 @@ export default function RestaurantCard() {
       />
     )
 
+  function onHandler(e: any) {
+    props.store.setComponent('Restaurant')
+  }
+
   return (
-    <TouchableOpacity style={card} onPress={() => console.log('hi')} activeOpacity={1}>
+    <TouchableOpacity style={card} onPress={(e) => onHandler(e)} activeOpacity={1}>
         <ImageBackground source={require('../../assets/myIcons/pazzo.jpg')} style={cardImage}/>
         <Text style={cardTitle}>Pazzo</Text>
         <View style={cardData}>
@@ -57,3 +62,5 @@ const { card, cardImage, cardTitle, cardData, cardTime, cardCoast } = StyleSheet
   cardCoast: {
   }
 });
+
+export default inject('store')(observer(RestaurantCard))

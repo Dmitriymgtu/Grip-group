@@ -4,7 +4,7 @@ import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import Note from '../Note'
 
-export default function DishCard() {
+export default function DishCard(props: any) {
     const [counter, setCounter] = useState(0)
     const fetchFonts = () => Font.loadAsync({'Montserrat': require('../../assets/fonts/Montserrat-Regular.ttf')})
 

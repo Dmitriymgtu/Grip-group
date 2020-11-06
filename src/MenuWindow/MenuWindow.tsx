@@ -1,10 +1,11 @@
+import { inject, observer } from 'mobx-react';
 import React, { useState } from 'react';
 import { View , StyleSheet, ScrollView} from 'react-native'
 import Note from '../Note'
 import DishCard from './DishCard'
 import StockCard from './StockCard'
 
-export default function MenuWindow() {
+function MenuWindow({store}: any) {
     return (
         <View style={ container }>
             <ScrollView style={stocks} horizontal={ true } showsHorizontalScrollIndicator={ false }>
@@ -23,18 +24,13 @@ export default function MenuWindow() {
                 <Note title='Напитки'/>
             </ScrollView> 
             <ScrollView style={cards} showsVerticalScrollIndicator={ false }>
+                {/* {store.dishes.map((dish: any, index: number) => <DishCard dish={dish} key={index}/>)} */}
                 <DishCard/>
                 <DishCard/>
                 <DishCard/>
                 <DishCard/>
                 <DishCard/>
-                <DishCard/>
-                <DishCard/>
-                <DishCard/>
-                <DishCard/>
-                <DishCard/>
-                <DishCard/>
-                <DishCard/>
+
                 <DishCard/>
                 <DishCard/>
                 <DishCard/>
@@ -45,20 +41,23 @@ export default function MenuWindow() {
 
 const { container, stocks, notes, cards } = StyleSheet.create({
     container: {
-        flex: 1,
         marginHorizontal: 20,
+        flex: 1
     },
     stocks: {
-        flexDirection: 'row',
+        // flexDirection: 'row',
+        marginBottom: 20,
         marginTop: 12,
         height: 115,
     },
     notes: {
-        marginTop: 20,
         height: 45,
-        flexDirection: 'row',
+        // flexDirection: 'row',
         marginBottom: 15,
     },
     cards: {
+        borderWidth: 2,
     }
 })
+
+export default inject('store')(observer(MenuWindow))
