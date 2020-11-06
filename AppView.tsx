@@ -19,29 +19,18 @@ function AppView(props: any) {
         // setField(val)
         props.store.setField(val)
     }
-  useEffect(() => {
-    console.log('useEffect:', props.store)
-  }, [props.store])
+
   return(
     <View style={ container }> 
-        {/* {store.componentName === 'Main' && <Main/>} */}
-        {/* {store.component === 'Cart' && <Cart/>} */}
-        {/* <Main/> */}
-        {/* <ProfileWindow/> */}
+        {store.componentName === 'Main' && <Main/>}
+        {store.componentName === 'Cart' && <CartView/>}
+        {store.componentName === 'Order' && <OrderView/>}
+        {store.componentName === 'Profile' && <ProfileWindow/>}
         {/* <MenuWindow/> */}
         {/* <CartView/> */}
-        {/* <View style={footer}>
+        <View style={footer}>
             <Footer/>
         </View>
-        <TouchableWithoutFeedback onPress={ () => console.log(props.store)}>
-            <Text style={foor}>{props.store.componentName}</Text>
-        </TouchableWithoutFeedback> */}
-        <Text>{props.store.field}</Text>
-        <Text>{props.store.componentName}</Text>
-        <TouchableWithoutFeedback onPress={() => props.store.setComponent('Profile')}><Text>Profile</Text></TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => props.store.setComponent('Cart')}><Text>Cart</Text></TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => props.store.setComponent('Main')}><Text>Main</Text></TouchableWithoutFeedback>
-        <TextInput style={field} value={props.store.field} onChangeText={(val: string) => onClick(val)}/>
     </View> 
   );
 }
