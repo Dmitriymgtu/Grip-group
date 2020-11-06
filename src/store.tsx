@@ -1,18 +1,21 @@
-import { observable, action } from 'mobx'
-import { createContext } from 'react';
+import {observable, action, makeAutoObservable} from 'mobx';
 
 type Component = 'Main' | 'Profile' | 'Restaurant' | 'Cart' | 'Order'
 
 class Store {
-    @observable componentName: Component = 'Main';
-    @action setComponent = (component: Component): void => {
-         this.componentName = component
-         alert(this.componentName)
+    componentName: Component = 'Main'
+    field = ''
+
+    constructor() {
+        makeAutoObservable(this)
+    }
+    setComponent = (component: Component): void => {
+         this.componentName = component;
+         console.log('STORE:', this)
+     }
+     setField(text: string): void {
+        this.field = text; 
      }
 }
 
-/* Store = decorate(Store, {
-    component: observable,
-    setComponent: action
-}) */
-export const storeContext = createContext(new Store())
+export default new Store()

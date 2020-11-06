@@ -3,11 +3,9 @@ import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from 'react
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import Note from '../Note'
-import { storeContext } from '../store'
 
 export default function RestaurantCard() {
 
-  const store = useContext(storeContext)
   const fetchFonts = () => Font.loadAsync({'Montserrat': require('../../assets/fonts/Montserrat-Regular.ttf')})
 
   const [dataLoaded, setDataLoaded] = useState(false)
@@ -21,7 +19,7 @@ export default function RestaurantCard() {
     )
 
   return (
-    <TouchableOpacity style={card} onPress={() => store.setComponent('Restaurant')} activeOpacity={1}>
+    <TouchableOpacity style={card} onPress={() => console.log('hi')} activeOpacity={1}>
         <ImageBackground source={require('../../assets/myIcons/pazzo.jpg')} style={cardImage}/>
         <Text style={cardTitle}>Pazzo</Text>
         <View style={cardData}>
