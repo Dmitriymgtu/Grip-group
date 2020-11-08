@@ -6,22 +6,17 @@ import AddressTitle from './AddressTitle'
 import RestaurantCard from './RestaurantCard'
 import Constants from 'expo-constants';
 import { YellowBox } from 'react-native';
+import { inject } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
 
 
-export default function Main() {
+function Main(props: any) {
   YellowBox.ignoreWarnings(['Remote debugger']);
   return (
     <>
       <AddressTitle/>
       <ScrollView style={scroll} showsVerticalScrollIndicator={false}>
-        <RestaurantCard/>
-        <RestaurantCard/>
-        <RestaurantCard/>
-        <RestaurantCard/>
-        <RestaurantCard/>
-        <RestaurantCard/>
-        <RestaurantCard/>
-        <RestaurantCard/>
+        {props.store.restaurants.map((restaurant: any, index: number) => <RestaurantCard key={index} restaurant={restaurant}/>)}
       </ScrollView>
     </>
     
@@ -33,3 +28,5 @@ const { scroll } = StyleSheet.create({
     marginHorizontal: 20
   }
 });
+
+export default inject('store')(observer(Main))

@@ -17,15 +17,15 @@ export default function Note(props: any) {
       />
     )
 
-  const onClick = (text: any) => {
-    if (props.title.includes('р.')) return
+  const onClick = () => {
+    alert(props.title)
   }
 
   return (
     <View style={ sizeNote }>
       {!(props.title.includes('р.') || props.title.includes('мин.'))
       ? 
-      <TouchableOpacity onPress={(text: any) => onClick(text)}>
+      <TouchableOpacity onPress={() => onClick()}>
         <Text style={ note }>{props.title}</Text>
       </TouchableOpacity>
       :

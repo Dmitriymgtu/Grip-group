@@ -6,6 +6,8 @@ import DishCard from './DishCard'
 import StockCard from './StockCard'
 
 function MenuWindow({store}: any) {
+
+    console.log(store.getNotes())
     return (
         <View style={ container }>
             <ScrollView style={stocks} horizontal={ true } showsHorizontalScrollIndicator={ false }>
@@ -16,24 +18,10 @@ function MenuWindow({store}: any) {
                 <StockCard/> 
             </ScrollView>
             <ScrollView style={notes} horizontal={ true } showsHorizontalScrollIndicator={ false } >
-                <Note title='Пицца'/>
-                <Note title='Роллы'/>
-                <Note title='Бургеры'/>
-                <Note title='Супы'/>
-                <Note title='Вторые блюда'/>
-                <Note title='Напитки'/>
+                {store.getNotes().map((value: string, index: number) => <Note title={value} key={index}/>)}
             </ScrollView> 
             <ScrollView style={cards} showsVerticalScrollIndicator={ false }>
-                {/* {store.dishes.map((dish: any, index: number) => <DishCard dish={dish} key={index}/>)} */}
-                <DishCard/>
-                <DishCard/>
-                <DishCard/>
-                <DishCard/>
-                <DishCard/>
-
-                <DishCard/>
-                <DishCard/>
-                <DishCard/>
+                {store.currentRestaurant.dishes.map((dish: any, index: number) => <DishCard dish={dish} key={index}/>)}
             </ScrollView>
         </View>
     )
@@ -42,7 +30,7 @@ function MenuWindow({store}: any) {
 const { container, stocks, notes, cards } = StyleSheet.create({
     container: {
         marginHorizontal: 20,
-        flex: 1
+        flex: 1,
     },
     stocks: {
         // flexDirection: 'row',
@@ -56,7 +44,7 @@ const { container, stocks, notes, cards } = StyleSheet.create({
         marginBottom: 15,
     },
     cards: {
-        borderWidth: 2,
+        
     }
 })
 

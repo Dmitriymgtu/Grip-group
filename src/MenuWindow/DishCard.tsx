@@ -18,13 +18,13 @@ export default function DishCard(props: any) {
         />)
 
     return (
-        <View style={dish}>
+        <TouchableOpacity style={dish} onPress={() => alert(props.dish.description)}>
             <Image source={require('../../assets/myIcons/pazzo.jpg')} style={dishImage}/>
             <View style={dishInfo}>
-              <Text style={dishTitle}>Pazzo</Text>
-              <Text style={dishComposition}>Pazzo Pazzo Pazzo Pazzo Pazzo PazzoPazzoPazzo Pazzo PazzoPazzo Pazzo PazzoPazzo</Text>
+              <Text style={dishTitle}>{props.dish.title}</Text>
+              {/* <Text style={dishComposition}>{props.dish.description}</Text> */}
               <View style={dishRow}>
-                <Note style={dishPrice} title='300 р.'/>
+                <Note style={dishPrice} title={props.dish.cost + ' р.'}/>
                 <View style={dishCounter}>
                   <View style={dishIncrease}>
                     <TouchableOpacity onPress={() => setCounter(prev => prev - 1)} disabled={ counter <= 0 }>
@@ -40,7 +40,7 @@ export default function DishCard(props: any) {
                 </View>
               </View>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 }
 
@@ -51,28 +51,34 @@ const { dish, dishImage, dishInfo, dishTitle, dishComposition, dishRow, dishPric
       flexDirection: 'row'
     },
     dishImage: {
-      height: 109,
-      width: 109,
+      height: 90,
+      width: 90,
       borderWidth: 1,
+      borderRadius: 10,
       borderColor: 'black'
     },
     dishInfo: {
       marginLeft: 14,
-      flex: 1
+      flex: 1,
+      justifyContent: 'space-between' 
     },
     dishTitle: {
-      fontSize: 16,
+      fontSize: 22,
       marginBottom: 6,
+      lineHeight: 24,
+      color: 'black',
+      fontWeight: '600',
       fontFamily: 'Montserrat'
     },
     dishComposition: {
       marginBottom: 6,
-      fontSize: 12,
+      fontSize: 15,
+      height: 40,
       fontFamily: 'Montserrat'
     },
     dishRow:{
       flexDirection: 'row',
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
     },
     dishPrice: {
     },

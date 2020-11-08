@@ -19,17 +19,18 @@ function RestaurantCard(props: any) {
       />
     )
 
-  function onHandler(e: any) {
+  function onHandler() {
     props.store.setComponent('Restaurant')
+    props.store.setRestaurant(props.restaurant)
   }
 
   return (
-    <TouchableOpacity style={card} onPress={(e) => onHandler(e)} activeOpacity={1}>
+    <TouchableOpacity style={card} onPress={() => onHandler()} activeOpacity={1}>
         <ImageBackground source={require('../../assets/myIcons/pazzo.jpg')} style={cardImage}/>
-        <Text style={cardTitle}>Pazzo</Text>
+        <Text style={cardTitle}>{props.restaurant.name}</Text>
         <View style={cardData}>
-            <Note style={cardTime} title='30-40 мин.' />
-            <Note style={cardCoast} title='от 500 р.' />
+            <Note style={cardTime} title={props.restaurant.deliveryTime} />
+            <Note style={cardCoast} title={'от ' + props.restaurant.deliveryCost + 'р.'} />
         </View>
     </TouchableOpacity>
     
