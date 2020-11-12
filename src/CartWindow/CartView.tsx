@@ -4,7 +4,7 @@ import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import CartCard from './CartCard';
 import { ScrollView } from 'react-native-gesture-handler';
-import { inject, observer } from 'mobx-react';
+import { inject, observer, PropTypes } from 'mobx-react';
 
 function CartView({store}: any) {
     const fetchFonts = () => Font.loadAsync({'Montserrat': require('../../assets/fonts/Montserrat-Regular.ttf')})
@@ -23,18 +23,14 @@ function CartView({store}: any) {
 
     return (
       <View style={container}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => store.clearCart()}>
                 <Text style={clearBottom}>Очистить</Text>
             </TouchableOpacity>
             <Text style={title}>Корзина</Text>
             <ScrollView style={cards} showsVerticalScrollIndicator={ false } >
-                <CartCard/>
-                <CartCard/>
-                <CartCard/>
-                <CartCard/>
-                <CartCard/>
+                {store.cart.dishes.map((dish: any) => <CartCard dish={dish} key={dish._id}/>)}
             </ScrollView>
-            <Text style={total}>Итого: 0 р.</Text>
+            <Text style={total}>Итого: {store.cart.cartCost} р.</Text>
       </View>
     );
 }

@@ -1,14 +1,48 @@
-import React, { useState } from 'react';
-import { Image, StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Image, StyleSheet, Text, View, TouchableOpacity, ImageBackground, Alert } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import Note from '../Note'
+import { inject } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
 
-export default function DishCard(props: any) {
-    const [counter, setCounter] = useState(0)
+function DishCard(props: any) {
+    const [counter, setCounter] = useState(props.dish.count | 0)
     const fetchFonts = () => Font.loadAsync({'Montserrat': require('../../assets/fonts/Montserrat-Regular.ttf')})
 
     const [dataLoaded, setDataLoaded] = useState(false)
+
+    useEffect(() => {
+      props.store.setDishCount(props.dish, counter)
+      props.store.setCart(props.dish, counter)
+    }, [counter])
+
+    const confirm = () =>
+    Alert.alert(
+      "Очистить корзину?",
+      "Все ранее выбранные товары будут удалены",
+      [
+        {
+          text: "Нет",
+          style: "cancel"
+        },
+        { 
+          text: "Да", 
+          onPress: () => {
+            props.store.clearPreviousRestaurant()
+            setCounter(prev => prev + 1)
+            props.store.clearCart()
+          }
+        }
+      ],
+      { cancelable: false }
+    );
+
+    const onHandler = (): void => {
+      if (props.store.previousRestaurant && props.store.previousRestaurant.name !== props.store.currentRestaurant.name) 
+        confirm()
+      else setCounter(prev => prev + 1)
+    }
 
     if (!dataLoaded) 
         return (
@@ -22,18 +56,17 @@ export default function DishCard(props: any) {
             <Image source={require('../../assets/myIcons/pazzo.jpg')} style={dishImage}/>
             <View style={dishInfo}>
               <Text style={dishTitle}>{props.dish.title}</Text>
-              {/* <Text style={dishComposition}>{props.dish.description}</Text> */}
               <View style={dishRow}>
                 <Note style={dishPrice} title={props.dish.cost + ' р.'}/>
                 <View style={dishCounter}>
-                  <View style={dishIncrease}>
+                  {counter !== 0 && <View style={dishIncrease}>
                     <TouchableOpacity onPress={() => setCounter(prev => prev - 1)} disabled={ counter <= 0 }>
                       <Text style={textCenter}>-</Text>
                     </TouchableOpacity>
-                  </View>
-                  <Text style={font19}>{counter}</Text>
+                  </View>}
+                  {counter !== 0 && <Text style={font19}>{counter}</Text>}
                   <View style={dishIncrease}>
-                    <TouchableOpacity onPress={() => setCounter(prev => prev + 1)}>
+                    <TouchableOpacity onPress={onHandler}>
                       <Text style={textCenter}>+</Text>
                     </TouchableOpacity>
                   </View>
@@ -47,25 +80,40 @@ export default function DishCard(props: any) {
 const { dish, dishImage, dishInfo, dishTitle, dishComposition, dishRow, dishPrice, font19, dishIncrease, textCenter, dishCounter } = StyleSheet.create({
     dish: {
       marginBottom: 18,
-      height: 109,
-      flexDirection: 'row'
+      marginTop: 10,
+      height: 140,
+      padding: 10, 
+      flexDirection: 'row',
+      alignItems: "center",
+      borderRadius: 10,
+      marginHorizontal: 20,
+      backgroundColor: 'white',
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5,
     },
     dishImage: {
-      height: 90,
-      width: 90,
+      height: 110,
+      width: 110,
       borderWidth: 1,
       borderRadius: 10,
-      borderColor: 'black'
+      borderColor: 'silver'
     },
     dishInfo: {
       marginLeft: 14,
       flex: 1,
+      height: 140,
       justifyContent: 'space-between' 
     },
     dishTitle: {
-      fontSize: 22,
-      marginBottom: 6,
-      lineHeight: 24,
+      fontSize: 18,
+      marginTop: 15,
+      lineHeight: 18,
       color: 'black',
       fontWeight: '600',
       fontFamily: 'Montserrat'
@@ -79,16 +127,18 @@ const { dish, dishImage, dishInfo, dishTitle, dishComposition, dishRow, dishPric
     dishRow:{
       flexDirection: 'row',
       justifyContent: 'space-between',
+      marginBottom: 15,
     },
     dishPrice: {
     },
     font19: {
       fontSize: 19, 
+      paddingHorizontal: 10,
     },
     dishIncrease: {
       height: 30,
       width: 30,
-      borderRadius: 20,
+      borderRadius: 8,
       fontSize: 19,
       backgroundColor: '#E8E8E8' 
     },
@@ -98,8 +148,8 @@ const { dish, dishImage, dishInfo, dishTitle, dishComposition, dishRow, dishPric
     },
     dishCounter: {
       flexDirection: 'row',
-      width: 105,
-      justifyContent: 'space-between',
       alignItems: 'center'
     }
   });
+
+  export default inject('store')(observer(DishCard))

@@ -1,45 +1,51 @@
+import { observer, inject } from 'mobx-react';
 import React, { useState } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Keyboard} from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler';
 import SwitchSelector from 'react-native-switch-selector';
+import { Store } from '../store/store';
 import Field from './Field'
 
-export default function OrderView() {
+function OrderView({store}:any) {
 
     const [horizontalFields] = useState([
-        {id: 1, title: 'Кв/офис'},
-        {id: 2, title: 'Домофон'},
-        {id: 3, title: 'Подъезд'},
-        {id: 4, title: 'Этаж'},
+        {id: 1, title: 'Кв/офис', value: store.order['Кв/офис']},
+        {id: 2, title: 'Домофон', value: store.order['Домофон']},
+        {id: 3, title: 'Подъезд', value: store.order['Подъезд']},
+        {id: 4, title: 'Этаж', value: store.order['Этаж']},
     ])
 
     const options = [
         {label: 'Apple Pay', value: 'Apple Pay'},
         {label: 'Карта', value: 'Карта'}
     ]
+
     return (
-        <View style={ container }>
-            <Text style={ orderTitle }>Заказ</Text>
-            <Field title='Время доставки'/>
-            <Field title='Адрес доставки'/>
-            <View style={horizontal}>
-                { horizontalFields.map(value => <Field key={value.id} title={value.title} />)}
+        <ScrollView onScroll={Keyboard.dismiss} showsVerticalScrollIndicator={false}>
+            <View style={ container }>
+                <Text style={ orderTitle }>Заказ</Text>
+                <Field title='Время доставки' value={store.order['Время доставки']}/>
+                <Field title='Адрес доставки' value={store.order['Адрес доставки']}/>
+                <View style={horizontal}>
+                    { horizontalFields.map(value => <Field key={value.id} title={value.title} value={value.value} />)}
+                </View>
+                <Field title='Комментарий к заказу' value={store.order['Комментарий к заказу']}/>
+                <Field title='Промокод' value={store.order['Промокод']}/>
+                <SwitchSelector style={ paymentMethod } 
+                                options={options} 
+                                initial={0} 
+                                onPress={(value) => console.log(value)}
+                                fontSize={19}
+                                buttonColor='white'
+                                backgroundColor='#DCDADA'
+                                hasPadding={true}  
+                                animationDuration={0}     
+                                textColor='#8C7F7F'
+                                height={54}
+                                selectedColor='black'         
+                />
             </View>
-            <Field title='Комментарий к заказу'/>
-            <Field title='Промокод'/>
-            <SwitchSelector style={ paymentMethod } 
-                            options={options} 
-                            initial={0} 
-                            onPress={(value) => console.log(value)}
-                            fontSize={19}
-                            buttonColor='white'
-                            backgroundColor='#DCDADA'
-                            hasPadding={true}  
-                            animationDuration={0}     
-                            textColor='#8C7F7F'
-                            height={54}
-                            selectedColor='black'         
-            />
-        </View>
+        </ScrollView>
     )
 }
 
@@ -61,3 +67,5 @@ const { container,orderTitle, horizontal, paymentMethod } = StyleSheet.create({
         marginTop: 15
     }
 })
+
+export default inject('store')(observer(OrderView))

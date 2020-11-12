@@ -16,7 +16,7 @@ function Main(props: any) {
     <>
       <AddressTitle/>
       <ScrollView style={scroll} showsVerticalScrollIndicator={false}>
-        {props.store.restaurants.map((restaurant: any, index: number) => <RestaurantCard key={index} restaurant={restaurant}/>)}
+        {props.store.restaurants.map((restaurant: any, index: number) => <RestaurantCard key={restaurant._id} restaurant={restaurant} setComponent={props.setComponent}/>)}
       </ScrollView>
     </>
     

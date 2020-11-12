@@ -1,5 +1,5 @@
 import React from 'react';
-import store from './src/store'
+import store from './src/store/store'
 import { observer, Provider } from 'mobx-react'
 import AppView from './AppView';
 

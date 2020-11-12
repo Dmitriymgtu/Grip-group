@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import {inject, observer} from 'mobx-react'
 import * as Font from 'expo-font';
@@ -18,10 +18,13 @@ function RestaurantCard(props: any) {
         onFinish={() => setDataLoaded(true)}
       />
     )
-
+  
   function onHandler() {
-    props.store.setComponent('Restaurant')
+    props.setComponent('Restaurant')
     props.store.setRestaurant(props.restaurant)
+    if (props.store.cart.dishes.length === 0) {
+      props.store.clearPreviousRestaurant()
+    }
   }
 
   return (

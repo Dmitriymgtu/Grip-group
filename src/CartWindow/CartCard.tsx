@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
-import Note from '../Note'
+import { observer } from 'mobx-react-lite';
+import { inject } from 'mobx-react';
 
-export default function CartCard() {
-    const [counter, setCounter] = useState(0)
+function CartCard(props: any) {
+    const [counter, setCounter] = useState(props.dish.count | 0)
     const fetchFonts = () => Font.loadAsync({'Montserrat': require('../../assets/fonts/Montserrat-Regular.ttf')})
 
     const [dataLoaded, setDataLoaded] = useState(false)
+
+    useEffect(() => {
+      props.store.setDishCount(props.dish, counter)
+      props.store.setCart(props.dish, counter)
+    }, [counter])
 
     if (!dataLoaded) 
         return (
@@ -23,10 +29,10 @@ export default function CartCard() {
         <View style={dishInfo}>
           <View style={dishTitle}>
               <Text style={font16}>
-                  Заголовок блюда
+                  {props.dish.title}
               </Text>
               <Text style={font16}>
-                  700 р.
+                {props.dish.cost + ' р.'}
               </Text>
           </View>
           <View style={dishCounter}>
@@ -51,20 +57,34 @@ const { dish, dishImage, dishInfo, dishTitle, font16, textCenter, dishIncrease, 
     dish: {
       marginBottom: 20,
       height: 80,
-      flexDirection: 'row'
+      flexDirection: 'row',
+      // shadowColor: "#000",
+      // backgroundColor: 'white',
+      // borderRadius: 5,
+
+      // shadowOffset: {
+      //   width: 0,
+      //   height: 2,
+      // },
+      // shadowOpacity: 0.25,
+      // shadowRadius: 3.84,
+
+      // elevation: 5,
     },
     dishImage: {
       height: 80,
       width: 80,
       borderWidth: 1,
+      borderRadius: 10,
       borderColor: 'black'
     },
     dishInfo: {
       marginLeft: 26,
       flex: 1,
+      justifyContent: 'space-between',
     },
     dishTitle: {
-      fontSize: 16,
+      fontSize: 22,
       marginBottom: 21,
       flexDirection: 'row',
       justifyContent: 'space-between',
@@ -76,7 +96,7 @@ const { dish, dishImage, dishInfo, dishTitle, font16, textCenter, dishIncrease, 
     dishIncrease: {
       height: 30,
       width: 30,
-      borderRadius: 20,
+      borderRadius: 8,
       fontSize: 19,
       backgroundColor: '#E8E8E8' 
     },
@@ -86,6 +106,7 @@ const { dish, dishImage, dishInfo, dishTitle, font16, textCenter, dishIncrease, 
     },
     font19: {
       fontSize: 19,
+      paddingHorizontal: 10,
     },
     dishCounter: {
       flexDirection: 'row',
@@ -94,3 +115,5 @@ const { dish, dishImage, dishInfo, dishTitle, font16, textCenter, dishIncrease, 
       alignItems: 'center'
     }
   });
+
+  export default inject('store')(observer(CartCard))

@@ -1,18 +1,27 @@
-import React, { useState } from 'react'
+import { inject } from 'mobx-react'
+import { observer } from 'mobx-react-lite'
+import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, TextInput, Keyboard } from 'react-native'
+import { Store } from '../store/store'
+import OrderView from './OrderView'
 
 
-export default function Field({ title }: any) {
-    const [field, setField] = useState('')
+function Field(props: any) {
+    const [field, setField] = useState(props.value)
+
     const titleType = ['Кв/офис', 'Домофон', 'Подъезд', 'Этаж']
+    
+    useEffect(() => {
+        props.store.setOrderField(props.title, field)
+    }, [field])
     return (
         <View style={ container }>
-            <Text style={fieldTitle}>{title}</Text>
+            <Text style={fieldTitle}>{props.title}</Text>
             <TextInput 
             style={ fieldInput }
-            onChangeText={(text: string) => setField(text)}
+            onChangeText={setField}
             value={ field }
-            keyboardType={titleType.includes(title) ? 'numeric' : 'default'}
+            keyboardType={titleType.includes(props.title) ? 'numeric' : 'default'}
             autoCorrect={false}
             />
         </View>
@@ -35,3 +44,5 @@ const { container, fieldTitle, fieldInput} = StyleSheet.create({
         minWidth: 64
     },
 })
+
+export default inject('store')(observer(Field))
