@@ -25,7 +25,6 @@ function Main(props: any) {
 
 const { scroll } = StyleSheet.create({
   scroll: {
-    marginHorizontal: 20
   }
 });
 

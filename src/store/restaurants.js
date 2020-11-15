@@ -30,7 +30,7 @@ export default rests = [
         {_id: 25, title: 'Брускетта', description: 'с паштетом из куриной печени и брусничным конфитюром', section: 'Сэндвичи с картофелем фри', cost: 325, img: ''},
 
     ]},
-    {_id: 3, name: 'KITCHEN MARKET', deliveryTime: '50-60 мин.', deliveryCost: 500, img: '', dishes: [
+    {_id: 3, name: 'Kitchen market', deliveryTime: '50-60 мин.', deliveryCost: 500, img: '', dishes: [
         {_id: 26, title: 'Овощной', description: 'с помидорами, огурцами, крем-сыром, красным луком и мятой', section: 'Салаты', cost: 365, img: ''},
         {_id: 27, title: 'Цезарь с курицей', description: 'филе куриное, яйцо перепелиные, помидор черри, соус Цезарь, листья салатные', section: 'Салаты', cost: 410, img: ''},
         {_id: 28, title: 'Ореховый', description: 'с курицей, запеченной на гриле, с фенхелем, грецким орехом и миксом из салатных листьев', section: 'Салаты', cost: 360, img: ''},

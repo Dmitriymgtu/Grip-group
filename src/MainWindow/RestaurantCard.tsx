@@ -30,10 +30,12 @@ function RestaurantCard(props: any) {
   return (
     <TouchableOpacity style={card} onPress={() => onHandler()} activeOpacity={1}>
         <ImageBackground source={require('../../assets/myIcons/pazzo.jpg')} style={cardImage}/>
-        <Text style={cardTitle}>{props.restaurant.name}</Text>
-        <View style={cardData}>
-            <Note style={cardTime} title={props.restaurant.deliveryTime} />
-            <Note style={cardCoast} title={'от ' + props.restaurant.deliveryCost + 'р.'} />
+        <View>
+          <Text style={cardTitle}>{props.restaurant.name}</Text>
+          <View style={cardData}>
+              <Note style={cardTime} title={props.restaurant.deliveryTime} />
+              <Note style={cardCoast} title={'от ' + props.restaurant.deliveryCost + 'р.'} />
+          </View>
         </View>
     </TouchableOpacity>
     
@@ -43,22 +45,38 @@ function RestaurantCard(props: any) {
 const { card, cardImage, cardTitle, cardData, cardTime, cardCoast } = StyleSheet.create({
   card: {
     marginBottom: 17,
-    height: 180,
+    height: 210,
+    marginTop: 10,
+    marginHorizontal: 20,
     borderRadius: 25,
-    borderColor: 'black',
+    borderColor: 'silver',
     borderWidth: 1,
-    paddingLeft: 19,
+    backgroundColor: 'white',
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5,
   },
   cardImage: {
-    height: 102,
-    width: 200,
+    height: 120,
+    borderRadius: 25,
+    borderWidth: 2,
+    borderColor: 'black'
   },
   cardTitle: {
-    fontSize: 19,
-    marginTop: 4,
+    fontSize: 21,
+    fontWeight: '500',
+    color: 'black',
+    marginTop: 10,
+    marginLeft: 20,
   },
   cardData: {
-    marginTop: 7,
+    marginTop: 10,
+    marginLeft: 20,
     flexDirection: 'row'
   },
   cardTime: {
