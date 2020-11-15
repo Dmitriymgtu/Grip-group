@@ -4,7 +4,7 @@ import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import CartCard from './CartCard';
 import { ScrollView } from 'react-native-gesture-handler';
-import { inject, observer, PropTypes } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 
 function CartView({store}: any) {
     const fetchFonts = () => Font.loadAsync({'Montserrat': require('../../assets/fonts/Montserrat-Regular.ttf')})
