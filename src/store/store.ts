@@ -47,7 +47,7 @@ interface Restaurant {
 interface CartRestaurant extends Restaurant {
     dishes: CartDish[]
 } 
-type Component = 'Main' | 'Profile' | 'Restaurant' | 'Cart' | 'Order' | 'Auth'
+
 type Section = 'Пицца' | 'Роллы' | 'Напитки' | 'Бургеры' | 'Паста' | 'Горячие блюда' | 'Свежий хлеб' | 'Десерты' | 'Паста' | 'Алкоголь' | 'Салаты' | 'Сэндвичи с картофелем фри' | 'Гриль'
 //enum 
 type MapType = Record<string, string>

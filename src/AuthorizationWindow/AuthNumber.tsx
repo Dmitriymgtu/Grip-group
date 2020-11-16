@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from 'react-native';
+import { Keyboard, ScrollView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from 'react-native';
+import { FirebaseRecaptchaVerifierModal } from 'expo-firebase-recaptcha';
+import * as firebase from 'firebase';
 
-
-export default function Auth() {
+export default function AuthNumber(props: any) {
   const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
 
@@ -46,20 +47,34 @@ export default function Auth() {
     }
   }
 
+  async function sendSms() {
+    await firebase.auth().signInWithPhoneNumber(phone)
+    .then(response => {
+      console.log(response)})
+    .catch(error => console.log(error));
+    props.setComponent('Auth-sms')
+  }
+
   return (
-    <View style={ form }>
+    <ScrollView onScroll={Keyboard.dismiss} showsVerticalScrollIndicator={false} contentContainerStyle={form}>
       <View>
-      <TextInput 
-        style={ field }
-        placeholder='+7 (___) __-__'
-        onChangeText={(tel: string) => handlePhone(tel)}
-        value={ phone }
-        placeholderTextColor='#9D9D9D'
-        keyboardType='numeric'
-        maxLength={18}
-        /* "\+7\s[\(][0-9]{3}[\)]\s\d{3}[-]\d{2}[-]\d{2}" */
-        />
-        <TextInput 
+        <View>
+          <TextInput 
+          style={ {...field, borderColor: phone.length === 18 ? '#629c65' : 'silver'} }
+          placeholder='+7 (___) __-__'
+          onChangeText={(tel: string) => handlePhone(tel)}
+          value={ phone }
+          placeholderTextColor='#9D9D9D'
+          keyboardType='numeric'
+          maxLength={18}
+          /* "\+7\s[\(][0-9]{3}[\)]\s\d{3}[-]\d{2}[-]\d{2}" */
+          />
+          {/* {phone.length === 18 && <View style={[rotate, {
+            transform: [{ rotate: '40deg' }]
+          }]}/>}          */}
+        </View>
+      
+        {/* <TextInput 
         style={ field }
         placeholder='Пароль'
         textContentType='password'
@@ -69,19 +84,20 @@ export default function Auth() {
         />
         <TouchableWithoutFeedback accessibilityRole='link' onPress={() => alert('Восстановление пароля')}>
           <Text style={ link }>Забыли пароль?</Text>
-        </TouchableWithoutFeedback>
+        </TouchableWithoutFeedback> */}
         <View style={ border }>
-          <TouchableWithoutFeedback onPress={() => alert('Вход')}>
+          <TouchableWithoutFeedback onPress={sendSms}>
               <Text style={ button }>Войти</Text>
           </TouchableWithoutFeedback>
         </View>
       </View>
-    </View>
+    </ScrollView>
     
   );
 }
 
-const { form, field, link, border, button } = StyleSheet.create({
+
+const { form, field, link, border, rotate, button } = StyleSheet.create({
   form: {
     flex: 1,
     alignItems: 'center',
@@ -94,8 +110,7 @@ const { form, field, link, border, button } = StyleSheet.create({
     height: 55,
     fontSize: 20,
     borderRadius: 30,
-    borderWidth: 1,
-    borderColor: 'silver'
+    borderWidth: 2,
   },
   link:{
     fontSize: 16,
@@ -109,6 +124,18 @@ const { form, field, link, border, button } = StyleSheet.create({
     width: 256,
     height: 50,
     backgroundColor: '#d2d2d2',
+  },
+  rotate: {
+    // borderRightWidth: 2,
+    // borderBottomWidth: 2,
+    // borderColor: '#629c65',
+    // height: 17,
+    // width: 12,
+    // top: 22,
+    // right: 15,
+    // position: "absolute",
+    // borderTopWidth: 10,
+    // borderLeftWidth: 10,
   },
   button:{
     fontSize: 20,

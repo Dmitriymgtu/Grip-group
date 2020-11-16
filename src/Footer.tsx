@@ -23,7 +23,7 @@ function Footer(props: any) {
     )
 
   const setUser = () => {
-    store.curUser ? setComponent('Profile') : setComponent('Auth')
+    store.curUser ? setComponent('Profile') : setComponent('Auth-number')
   }
   return (
     <View style={styles.footer}>
@@ -44,7 +44,7 @@ function Footer(props: any) {
       </TouchableOpacity>
       <TouchableOpacity style={styles.footerButton} onPress={setUser} activeOpacity={1}>
         <ImageBackground style={styles.image} source={require('../assets/footerIcons/profileIcon-32px.png')}/>
-        <Text style={component === 'Profile' || component === 'Auth' ? styles.activeButton : styles.passiveButton}>Профиль</Text>
+        <Text style={component === 'Profile' || component === 'Auth-number' || component === 'Auth-sms' ? styles.activeButton : styles.passiveButton}>Профиль</Text>
       </TouchableOpacity>      
     </View>
   );
