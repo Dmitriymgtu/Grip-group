@@ -48,14 +48,15 @@ export default function Auth() {
 
   return (
     <View style={ form }>
-        <TextInput 
+      <View>
+      <TextInput 
         style={ field }
         placeholder='+7 (___) __-__'
         onChangeText={(tel: string) => handlePhone(tel)}
         value={ phone }
         placeholderTextColor='#9D9D9D'
         keyboardType='numeric'
-        maxLength={14}
+        maxLength={18}
         /* "\+7\s[\(][0-9]{3}[\)]\s\d{3}[-]\d{2}[-]\d{2}" */
         />
         <TextInput 
@@ -69,15 +70,18 @@ export default function Auth() {
         <TouchableWithoutFeedback accessibilityRole='link' onPress={() => alert('Восстановление пароля')}>
           <Text style={ link }>Забыли пароль?</Text>
         </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => alert('Вход')}>
-          <Text style={ button }>Войти</Text>
-        </TouchableWithoutFeedback>
+        <View style={ border }>
+          <TouchableWithoutFeedback onPress={() => alert('Вход')}>
+              <Text style={ button }>Войти</Text>
+          </TouchableWithoutFeedback>
+        </View>
+      </View>
     </View>
     
   );
 }
 
-const { form, field, link, button } = StyleSheet.create({
+const { form, field, link, border, button } = StyleSheet.create({
   form: {
     flex: 1,
     alignItems: 'center',
@@ -91,21 +95,25 @@ const { form, field, link, button } = StyleSheet.create({
     fontSize: 20,
     borderRadius: 30,
     borderWidth: 1,
-    borderColor: 'black'
+    borderColor: 'silver'
   },
   link:{
     fontSize: 16,
-    marginLeft: 128, 
-    color: '#3B4282'
+    alignSelf: 'flex-end',
+    color: '#3B4282',
+    marginTop: 5,
   },
-  button:{
+  border: {
+    marginTop: 20,
+    borderRadius: 20,
     width: 256,
     height: 50,
-    marginTop: 20,
-    borderRadius: 40,
-    backgroundColor: '#D2D2D2',
+    backgroundColor: '#d2d2d2',
+  },
+  button:{
     fontSize: 20,
     textAlign: 'center',
     paddingTop: 11,
+    color: '#595051'
   }
 });

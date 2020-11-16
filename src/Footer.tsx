@@ -9,6 +9,7 @@ import { Store } from './store/store';
 
 function Footer(props: any) {
 
+  const { store, component, setComponent } = props
   const fetchFonts = () => Font.loadAsync({'Montserrat': require('../assets/fonts/Montserrat-Regular.ttf')})
 
   const [dataLoaded, setDataLoaded] = useState(false)
@@ -21,27 +22,29 @@ function Footer(props: any) {
       />
     )
 
-  
+  const setUser = () => {
+    store.curUser ? setComponent('Profile') : setComponent('Auth')
+  }
   return (
     <View style={styles.footer}>
-      <TouchableOpacity style={{...styles.footerButton}} onPress={() => props.setComponent('Main')} activeOpacity={1}>
+      <TouchableOpacity style={{...styles.footerButton}} onPress={() => setComponent('Main')} activeOpacity={1}>
         <ImageBackground style={styles.image} source={require('../assets/footerIcons/eatIcon-32px.png')}/>
-        <Text style={props.component === 'Main' ? styles.activeButton : styles.passiveButton}>Главное</Text>
+        <Text style={component === 'Main' ? styles.activeButton : styles.passiveButton}>Главное</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.footerButton} onPress={() => props.setComponent('Cart')} activeOpacity={1}>
+      <TouchableOpacity style={styles.footerButton} onPress={() => setComponent('Cart')} activeOpacity={1}>
         <ImageBackground style={styles.image} source={require('../assets/footerIcons/cartIcon-32px.png')}/>
-        {props.store.cartCount !== 0 && <View style={styles.cartView}>
-          <Text style={styles.cartCount}>{props.store.cartCount}</Text>
+        {store.cartCount !== 0 && <View style={styles.cartView}>
+          <Text style={styles.cartCount}>{store.cartCount}</Text>
         </View>}
-        <Text style={props.component === 'Cart' ? styles.activeButton : styles.passiveButton}>Корзина</Text>
+        <Text style={component === 'Cart' ? styles.activeButton : styles.passiveButton}>Корзина</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.footerButton} onPress={() => props.setComponent('Order')} activeOpacity={1}>
+      <TouchableOpacity style={styles.footerButton} onPress={() => setComponent('Order')} activeOpacity={1}>
         <ImageBackground style={styles.image} source={require('../assets/footerIcons/orderIcon-32px.png')}/>
-        <Text style={props.component === 'Order' ? styles.activeButton : styles.passiveButton}>Заказ</Text>
+        <Text style={component === 'Order' ? styles.activeButton : styles.passiveButton}>Заказ</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.footerButton} onPress={ () => props.setComponent('Profile')} activeOpacity={1}>
+      <TouchableOpacity style={styles.footerButton} onPress={setUser} activeOpacity={1}>
         <ImageBackground style={styles.image} source={require('../assets/footerIcons/profileIcon-32px.png')}/>
-        <Text style={props.store.component === 'Profile' ? styles.activeButton : styles.passiveButton}>Профиль</Text>
+        <Text style={component === 'Profile' || component === 'Auth' ? styles.activeButton : styles.passiveButton}>Профиль</Text>
       </TouchableOpacity>      
     </View>
   );
