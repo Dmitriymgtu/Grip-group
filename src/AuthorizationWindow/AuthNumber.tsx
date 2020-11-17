@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Keyboard, ScrollView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from 'react-native';
-import { FirebaseRecaptchaVerifierModal } from 'expo-firebase-recaptcha';
-import * as firebase from 'firebase';
+// import { FirebaseRecaptchaVerifierModal } from 'expo-firebase-recaptcha';
+// import * as firebase from 'firebase';
 
 export default function AuthNumber(props: any) {
   const [phone, setPhone] = useState('')
@@ -48,10 +48,10 @@ export default function AuthNumber(props: any) {
   }
 
   async function sendSms() {
-    await firebase.auth().signInWithPhoneNumber(phone)
-    .then(response => {
-      console.log(response)})
-    .catch(error => console.log(error));
+    // await firebase.auth().signInWithPhoneNumber(phone)
+    // .then(response => {
+    //   console.log(response)})
+    // .catch(error => console.log(error));
     props.setComponent('Auth-sms')
   }
 
