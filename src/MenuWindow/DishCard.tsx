@@ -51,13 +51,16 @@ function DishCard(props: any) {
             onFinish={() => setDataLoaded(true)}
         />)
 
+    const setDishes = (event: any): void => {
+      props.store.setDishesWithLayouts({_id: props.dish._id, section: props.dish.section, ...event.nativeEvent.layout})
+    }
     return (
-        <TouchableOpacity style={dish} onPress={() => alert(props.dish.description)}>
+        <TouchableOpacity style={dish} onPress={() => alert(props.dish.description)} onLayout={setDishes}>
             <Image source={require('../../assets/myIcons/pazzo.jpg')} style={dishImage}/>
             <View style={dishInfo}>
               <Text style={dishTitle}>{props.dish.title}</Text>
               <View style={dishRow}>
-                <Note style={dishPrice} title={props.dish.cost + ' р.'}/>
+                <Note style={dishPrice} note={{title: props.dish.cost + ' р.'}}/>
                 <View style={dishCounter}>
                   {counter !== 0 && <View style={dishIncrease}>
                     <TouchableOpacity onPress={() => setCounter(prev => prev - 1)} disabled={ counter <= 0 }>

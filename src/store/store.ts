@@ -1,4 +1,5 @@
 import {makeAutoObservable} from 'mobx';
+import { Ref } from 'react';
 import rests from './restaurants';
 
 interface Dish {
@@ -37,6 +38,7 @@ interface Order {
 //     ["Время доставки", ''],
 // ])
 interface Restaurant {
+    _id: number
     name: string
     deliveryTime: string
     deliveryCost: number
@@ -47,19 +49,40 @@ interface Restaurant {
 interface CartRestaurant extends Restaurant {
     dishes: CartDish[]
 } 
-type Component = 'Main' | 'Profile' | 'Restaurant' | 'Cart' | 'Order'
+
+interface DishLayout {
+    _id: number
+    section: Section
+    x: number
+    y: number
+    width: number
+    height: number
+}
+
 type Section = 'Пицца' | 'Роллы' | 'Напитки' | 'Бургеры' | 'Паста' | 'Горячие блюда' | 'Свежий хлеб' | 'Десерты' | 'Паста' | 'Алкоголь' | 'Салаты' | 'Сэндвичи с картофелем фри' | 'Гриль'
 //enum 
 type MapType = Record<string, string>
 export class Store {
 
+    user = null
+
     restaurants: Restaurant[] = rests
+    currentRestaurant: CartRestaurant | null = null
+    previousRestaurant: CartRestaurant | null = null
+    
+    dishesWithLayouts: DishLayout[] | [] = []
+
+    scroll = {
+        x: 0,
+        y: 0
+    }
+
+    scrollRef: any 
     cart: Cart = {
         cartCost: 0,
         dishes: []
     }
-    currentRestaurant: CartRestaurant | null = null
-    previousRestaurant: CartRestaurant | null = null
+
     order: MapType = {
         "Время доставки": '',
         "Адрес доставки": '',
@@ -71,11 +94,13 @@ export class Store {
         'Промокод': '',
     }
 
+
     constructor() {
         makeAutoObservable(this)
     }
 
     setRestaurant = (restaurant: Restaurant): void => {
+        this.dishesWithLayouts = []
         if (!this.previousRestaurant) {
             if (!this.currentRestaurant) {
                 this.currentRestaurant = {...restaurant, dishes: restaurant.dishes.map((dish: Dish) => {return {...dish, count: 0}})}
@@ -98,6 +123,10 @@ export class Store {
 
     clearPreviousRestaurant = (): void => {
         this.previousRestaurant = null
+    }
+
+    setCurrentRestaurantNull = (): void => {
+        this.currentRestaurant = null
     }
 
     setDishCount = (dish: CartDish, counter: number): void => {
@@ -132,6 +161,20 @@ export class Store {
         this.order[key] = value
     }
 
+    setDishesWithLayouts = (dishWithLayouts: DishLayout): void => {
+        if (!this.dishesWithLayouts?.find(value => value._id === dishWithLayouts._id)) {
+            this.dishesWithLayouts = [...this.dishesWithLayouts, dishWithLayouts]
+        }
+    }
+
+    setScroll = ({x ,y}: {x: number, y:number}): void => {
+        
+        this.scrollRef.scrollTo({x, y, animated: true})
+    }
+
+    setScrollRef = (ref: any): void => {
+        this.scrollRef = ref
+    }
     get notes(): any { 
         let result: string[] = []
         if (this.currentRestaurant) {
@@ -141,10 +184,23 @@ export class Store {
                     result.push(note)
             })
         }
-        return result.map((value: string, index: number) => {return {_id: index, value}})
+        if (this.dishesWithLayouts.length === 0)
+            return result.map((value: string, index: number) => {return {_id: index, title: value}})
+        else {
+            const array = this.dishesWithLayouts.slice().sort((first: DishLayout, second: DishLayout) => first.y - second.y)
+            return result.map((value: string, index: number) => {
+                return {
+                    _id: index, 
+                    title: value, 
+                    dishX: array.find(dish => dish.section === value)?.x,
+                    dishY: array.find(dish => dish.section === value)?.y,
+                }
+            })
+        }
+        
     }
 
-    get dishes(): Array<CartDish> {
+    get dishes(): Array<CartDish> | [] {
         return this.currentRestaurant ? this.currentRestaurant.dishes : []
     }
 

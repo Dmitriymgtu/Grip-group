@@ -37,7 +37,7 @@ export default rests = [
         {_id: 29, title: 'Свиной стейк', description: 'с картошкой, жаренной с луком', section: 'Гриль', cost: 510, img: ''},
         {_id: 30, title: 'Кебаб из баранины', description: 'с лепешкой, хумусом и перечным соусом харисса', section: 'Гриль', cost: 490, img: ''},
         {_id: 31, title: 'Шашлык из баранины', description: 'с запеченным баклажаном и мятным соусом', section: 'Гриль', cost: 485, img: ''},
-        {_id: 32, title: 'Клубника с фенхелем, с соусом из бузины и ванильным мороженым', description: '', section: 'Десерты', cost: 280, img: ''},
+        {_id: 32, title: 'Клубника с фенхелем', description: 'с соусом из бузины и ванильным мороженым', section: 'Десерты', cost: 280, img: ''},
         {_id: 33, title: 'Хрустящая меренга с лаймовым чизкейком', description: '', section: 'Десерты', cost: 280, img: ''},
         {_id: 34, title: 'Наполеон', description: 'с черничным кремом и ананасовым мороженым', section: 'Десерты', cost: 280, img: ''},
         {_id: 35, title: 'ETE DE MORT', description: 'крепкий светлый бельгийский эль', section: 'Алкоголь', cost: 345, img: ''},

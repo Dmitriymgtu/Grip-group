@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
+import { inject } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
 
-export default function Note(props: any) {
+
+function Note(props: any) {
 
   const fetchFonts = () => Font.loadAsync({'Montserrat': require('../assets/fonts/Montserrat-Regular.ttf')})
 
@@ -18,18 +21,22 @@ export default function Note(props: any) {
     )
 
   const onClick = () => {
-    alert(props.title)
+    if (props.note.dishX)
+      props.store.setScroll({x: props.note.dishX, y: props.note.dishY})
+    else {
+      props.store.setOrderField('Адрес доставки', props.note.title)
+    }
   }
 
   return (
     <View style={ sizeNote }>
-      {!(props.title.includes('р.') || props.title.includes('мин.'))
+      {!(props.note.title.includes('р.') || props.note.title.includes('мин.'))
       ? 
       <TouchableOpacity onPress={() => onClick()}>
-        <Text style={ note }>{props.title}</Text>
+        <Text style={ note }>{props.note.title}</Text>
       </TouchableOpacity>
       :
-      <Text style={ note }>{props.title}</Text>
+      <Text style={ note }>{props.note.title}</Text>
       }
     </View>
     
@@ -51,3 +58,6 @@ const { note, sizeNote } = StyleSheet.create({
     borderRadius: 16,
   }
 });
+
+
+export default inject('store')(observer(Note))

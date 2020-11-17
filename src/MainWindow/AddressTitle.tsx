@@ -24,10 +24,10 @@ export default function AddressTitle() {
         <Text style={ addressTitleText }>На какой адрес закажете?</Text>
       </View>
       <ScrollView horizontal={ true } showsHorizontalScrollIndicator={ false } >
-        <Note title='ул.Октябрьская, д.4'/>
-        <Note title='ул.Бригадная, д.7'/>
-        <Note title='девреня Бутово, д.52'/>
-        <Note title='2-я Институтская, 4к4'/>
+        <Note note={{title: 'ул.Октябрьская, д.4'}}/>
+        <Note note={{title: 'ул.Бригадная, д.7'}}/>
+        <Note note={{title: 'девреня Бутово, д.52'}}/>
+        <Note note={{title: '2-я Институтская, 4к4'}}/>
       </ScrollView>   
     </View>
     

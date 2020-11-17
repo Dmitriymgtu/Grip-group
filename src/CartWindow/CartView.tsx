@@ -21,9 +21,13 @@ function CartView({store}: any) {
     if (store.cart.dishes.length === 0) 
     return <View style={noDishesContainer}><Text style={noDishes}>Ваша корзина пуста!</Text></View>
 
+    const onHandler = () => {
+        store.clearCart()
+        store.setCurrentRestaurantNull()
+    }
     return (
       <View style={container}>
-            <TouchableOpacity onPress={() => store.clearCart()}>
+            <TouchableOpacity onPress={onHandler}>
                 <Text style={clearBottom}>Очистить</Text>
             </TouchableOpacity>
             <Text style={title}>Корзина</Text>

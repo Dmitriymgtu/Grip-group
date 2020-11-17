@@ -1,20 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Main from './src/MainWindow/Main';
 import Footer from './src/Footer';
-import AuthNumber from './src/AuthorizationWindow/AuthNumber';
-import AuthSms from './src/AuthorizationWindow/AuthSms';
 import ProfileWindow from './src/ProfileWindow/ProfileWindow';
 import MenuWindow from './src/MenuWindow/MenuWindow';
 import { inject, observer, Provider } from 'mobx-react'
 import OrderView from './src/OrderWindow/OrderView';
 import CartView from './src/CartWindow/CartView';
+import AuthSms from './src/AuthorizationWindow/AuthSms';
+import AuthNumber from './src/AuthorizationWindow/AuthNumber';
 
 type Component = 'Main' | 'Profile' | 'Restaurant' | 'Cart' | 'Order' | 'Auth-number' | 'Auth-sms'
 
 function AppView(props: any) {
 
   const [component, setComponent] = useState('Main')
+  
+  useEffect(() => {
+    if (component !== 'Order') setComponent('Order')
+  }, [props.store.order['Адрес доставки']])
+
+  useEffect(() => {
+    setComponent('Main')
+  }, [])
 
   return(
     <View style={ container }> 
@@ -25,8 +33,6 @@ function AppView(props: any) {
         {component === 'Profile' && <ProfileWindow/>}
         {component === 'Auth-number' && <AuthNumber setComponent={setComponent}/>}
         {component === 'Auth-sms' && <AuthSms/>}
-        {/* <MenuWindow/> */}
-        {/* <CartView/> */}
         {component !== 'Restaurant' && <View style={footer}>
             <Footer setComponent={setComponent} component={component}/>
         </View>}

@@ -33,8 +33,8 @@ function RestaurantCard(props: any) {
         <View>
           <Text style={cardTitle}>{props.restaurant.name}</Text>
           <View style={cardData}>
-              <Note style={cardTime} title={props.restaurant.deliveryTime} />
-              <Note style={cardCoast} title={'от ' + props.restaurant.deliveryCost + 'р.'} />
+              <Note style={cardTime} note={{title: props.restaurant.deliveryTime}} />
+              <Note style={cardCoast} note={{title: 'от ' + props.restaurant.deliveryCost + 'р.'}} />
           </View>
         </View>
     </TouchableOpacity>
@@ -62,10 +62,9 @@ const { card, cardImage, cardTitle, cardData, cardTime, cardCoast } = StyleSheet
       elevation: 5,
   },
   cardImage: {
-    height: 120,
+    marginTop: 25,
+    height: 95,
     borderRadius: 25,
-    borderWidth: 2,
-    borderColor: 'black'
   },
   cardTitle: {
     fontSize: 21,
