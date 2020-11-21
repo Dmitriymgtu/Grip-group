@@ -1,12 +1,6 @@
 import {makeAutoObservable} from 'mobx';
-<<<<<<< HEAD
-import { rests } from "./restaurants";
-import { Dish, CartDish, Cart, Restaurant, CartRestaurant, DishLayout, MapType } from './types'
-
-=======
 import { rests } from './restaurants';
 import { Dish, CartDish, Cart, Restaurant, CartRestaurant, DishLayout, MapType } from "./types"
->>>>>>> types_out_of__store
 
 export class Store {
 

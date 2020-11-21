@@ -59,8 +59,4 @@ type Section = 'Пицца' | 'Роллы' | 'Напитки' | 'Бургеры'
 //enum 
 type MapType = Record<string, string>
 
-<<<<<<< HEAD
 export { Dish, CartDish, Cart, Order, Restaurant, CartRestaurant, DishLayout, Section, MapType }
-=======
-export { Dish, CartDish, Cart, Restaurant, CartRestaurant, DishLayout, MapType }
->>>>>>> types_out_of__store
