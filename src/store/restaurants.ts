@@ -1,6 +1,9 @@
 import { Restaurant } from "./types"
 
+<<<<<<< HEAD:src/store/restaurants.ts
 
+=======
+>>>>>>> types_out_of__store:src/store/restaurants.js
 export const rests: Restaurant[] = [
     {_id: 1, name: 'Паццо', deliveryTime: '50-60 мин.', deliveryCost: 500, img: '', dishes: [
         {_id: 1, title: 'Маргарита', description: 'с соусом из помидор, сыром моцарелла и базиликом', section: 'Пицца', cost: 320, img: ''},
