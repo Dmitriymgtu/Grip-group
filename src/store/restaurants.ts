@@ -1,4 +1,6 @@
-export default rests = [
+import { Restaurant } from "./types"
+
+export const rests: Restaurant[] = [
     {_id: 1, name: 'Паццо', deliveryTime: '50-60 мин.', deliveryCost: 500, img: '', dishes: [
         {_id: 1, title: 'Маргарита', description: 'с соусом из помидор, сыром моцарелла и базиликом', section: 'Пицца', cost: 320, img: ''},
         {_id: 2, title: 'Паццо', description: 'салями сальсичча, ветчина, микс из грибов - портобелло, шампиньоны, вешенки, сладкий зеленый перец, маслины, сыр моцарелла', section: 'Пицца', cost: 405, img: ''},
