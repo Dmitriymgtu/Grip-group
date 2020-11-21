@@ -4,13 +4,11 @@ import Main from './src/MainWindow/Main';
 import Footer from './src/Footer';
 import ProfileWindow from './src/ProfileWindow/ProfileWindow';
 import MenuWindow from './src/MenuWindow/MenuWindow';
-import { inject, observer, Provider } from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 import OrderView from './src/OrderWindow/OrderView';
 import CartView from './src/CartWindow/CartView';
 import AuthSms from './src/AuthorizationWindow/AuthSms';
 import AuthNumber from './src/AuthorizationWindow/AuthNumber';
-
-type Component = 'Main' | 'Profile' | 'Restaurant' | 'Cart' | 'Order' | 'Auth-number' | 'Auth-sms'
 
 function AppView(props: any) {
 
@@ -41,7 +39,7 @@ function AppView(props: any) {
   );
 }
 
-const { container, footer, field } = StyleSheet.create({
+const { container, footer } = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 20,
