@@ -2,7 +2,7 @@ import { Provider } from 'mobx-react';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Note from '../../src/Note';
+import Note from '../../src/Components/Note';
 import { Store } from '../../src/store/store';
 
 describe('<Note />', () => {
@@ -13,16 +13,6 @@ describe('<Note />', () => {
       <Note note={note}/>
     </Provider>
     ).toJSON()
-
-  beforeEach(() => {
-
-  })
-
-  afterEach(() => {
-
-  })
-
-
 
   it('has 1 Text child', () => {
     const minutesNote = noteNode({title: '50-60 мин.'})

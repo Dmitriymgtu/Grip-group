@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite'
 import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, TextInput, Keyboard } from 'react-native'
 import { Store } from '../store/store'
-import OrderView from './OrderView'
+import OrderView from '../screens/OrderView'
 
 
 function Field(props: any) {

@@ -3,7 +3,7 @@ import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from 'react
 import {inject, observer} from 'mobx-react'
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
-import Note from '../Note'
+import Note from './Note'
 
 function RestaurantCard(props: any) {
 

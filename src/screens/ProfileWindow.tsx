@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import ProfileField from './ProfileField'
+import ProfileField from '../Components/ProfileField'
 
 export default function ProfileWindow() {
 

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import Main from './src/MainWindow/Main';
-import Footer from './src/Footer';
-import ProfileWindow from './src/ProfileWindow/ProfileWindow';
-import MenuWindow from './src/MenuWindow/MenuWindow';
+import Main from './src/screens/Main';
+import Footer from './src/Components/Footer';
+import ProfileWindow from './src/screens/ProfileWindow';
+import MenuWindow from './src/screens/MenuWindow';
 import { inject, observer } from 'mobx-react'
-import OrderView from './src/OrderWindow/OrderView';
+import OrderView from './src/screens/OrderView';
 import CartView from './src/CartWindow/CartView';
-import AuthSms from './src/AuthorizationWindow/AuthSms';
-import AuthNumber from './src/AuthorizationWindow/AuthNumber';
+import AuthSms from './src/screens/AuthSms';
+import AuthNumber from './src/screens/AuthNumber';
 
 function AppView(props: any) {
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, View, TouchableOpacity, ImageBackground, Alert } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
-import Note from '../Note'
+import Note from './Note'
 import { inject } from 'mobx-react';
 import { observer } from 'mobx-react-lite';
 

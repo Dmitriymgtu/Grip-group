@@ -3,7 +3,7 @@ import { ImageBackground, StyleSheet, View, TouchableOpacity, Text } from 'react
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import { observer, inject} from 'mobx-react';
-import { Store } from './store/store';
+import { Store } from '../store/store';
 
 function Footer(props: any) {
 

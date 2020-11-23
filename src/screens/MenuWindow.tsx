@@ -1,9 +1,9 @@
 import { inject, observer, PropTypes } from 'mobx-react';
 import React, { useEffect, useRef, useState } from 'react';
 import { View , StyleSheet, ScrollView, Text, TouchableOpacity, Image} from 'react-native'
-import Note from '../Note'
-import DishCard from './DishCard'
-import StockCard from './StockCard'
+import Note from '../Components/Note'
+import DishCard from '../Components/DishCard'
+import StockCard from '../Components/StockCard'
 import {Store} from '../store/store'
 
 function MenuWindow({store, setComponent}: any) {
