@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ImageBackground, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import Note from './Note'

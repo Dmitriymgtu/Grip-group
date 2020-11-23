@@ -1,11 +1,10 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 export default function StockCard() {
 
     return (
         <TouchableOpacity style={stock} onPress={() => alert('Акция')} activeOpacity={1}>
-            {/* <ImageBackground source={require('../../assets/icons/pazzo.jpg')}/> */}
             <Text style={stockText}>Акция</Text>
         </TouchableOpacity>
     );

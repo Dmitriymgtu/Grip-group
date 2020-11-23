@@ -39,8 +39,5 @@ const { form, field } = StyleSheet.create({
     borderRadius: 30,
     borderWidth: 2,
     borderColor: 'silver'
-  },
-  sms: {
-
   }
 });

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import ProfileField from '../Components/ProfileField'
 
 export default function ProfileWindow() {
@@ -25,5 +25,4 @@ const { container, profileName } = StyleSheet.create({
       fontSize: 35,
       marginBottom: 53
     }
-    
 });

@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ImageBackground, StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import { observer, inject} from 'mobx-react';
-import { Store } from '../store/store';
 
 function Footer(props: any) {
 

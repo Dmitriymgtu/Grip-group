@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import * as Font from 'expo-font';
-import { AppLoading } from 'expo';
 import { inject } from 'mobx-react';
 import { observer } from 'mobx-react-lite';
 

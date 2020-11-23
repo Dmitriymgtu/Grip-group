@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image, StyleSheet, Text, View, TouchableOpacity, ImageBackground, Alert } from 'react-native';
+import { Image, StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import Note from './Note'

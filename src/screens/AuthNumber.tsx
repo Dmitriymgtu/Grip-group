@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { Keyboard, ScrollView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from 'react-native';
-// import { FirebaseRecaptchaVerifierModal } from 'expo-firebase-recaptcha';
-// import * as firebase from 'firebase';
 
 export default function AuthNumber(props: any) {
   const [phone, setPhone] = useState('')
-  const [password, setPassword] = useState('')
 
   function handlePhone(string: string): void { // +7 (xxx) xxx-xx-xx
     const phnLength: number = phone.length
@@ -48,10 +45,6 @@ export default function AuthNumber(props: any) {
   }
 
   async function sendSms() {
-    // await firebase.auth().signInWithPhoneNumber(phone)
-    // .then(response => {
-    //   console.log(response)})
-    // .catch(error => console.log(error));
     props.setComponent('Auth-sms')
   }
 
@@ -69,22 +62,7 @@ export default function AuthNumber(props: any) {
           maxLength={18}
           /* "\+7\s[\(][0-9]{3}[\)]\s\d{3}[-]\d{2}[-]\d{2}" */
           />
-          {/* {phone.length === 18 && <View style={[rotate, {
-            transform: [{ rotate: '40deg' }]
-          }]}/>}          */}
         </View>
-      
-        {/* <TextInput 
-        style={ field }
-        placeholder='Пароль'
-        textContentType='password'
-        placeholderTextColor='#9D9D9D'
-        onChangeText={(paswd: string) => setPassword(paswd)}
-        value={ password }
-        />
-        <TouchableWithoutFeedback accessibilityRole='link' onPress={() => alert('Восстановление пароля')}>
-          <Text style={ link }>Забыли пароль?</Text>
-        </TouchableWithoutFeedback> */}
         <View style={ border }>
           <TouchableWithoutFeedback onPress={sendSms}>
               <Text style={ button }>Войти</Text>

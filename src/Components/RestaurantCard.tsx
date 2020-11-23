@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import {inject, observer} from 'mobx-react'
 import * as Font from 'expo-font';
@@ -77,10 +77,6 @@ const { card, cardImage, cardTitle, cardData, cardTime, cardCoast } = StyleSheet
     marginTop: 10,
     marginLeft: 20,
     flexDirection: 'row'
-  },
-  cardTime: {
-  },
-  cardCoast: {
   }
 });
 

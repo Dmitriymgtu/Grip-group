@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { View, Text, StyleSheet, Keyboard} from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler';
 import SwitchSelector from 'react-native-switch-selector';
-import { Store } from '../store/store';
 import Field from '../Components/Field'
 
 function OrderView({store}:any) {

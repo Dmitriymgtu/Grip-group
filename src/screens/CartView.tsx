@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Image, StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import CartCard from '../Components/CartCard';

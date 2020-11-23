@@ -1,10 +1,8 @@
-import { inject, observer, PropTypes } from 'mobx-react';
-import React, { useEffect, useRef, useState } from 'react';
+import { inject, observer } from 'mobx-react';
+import React from 'react';
 import { View , StyleSheet, ScrollView, Text, TouchableOpacity, Image} from 'react-native'
 import Note from '../Components/Note'
 import DishCard from '../Components/DishCard'
-import StockCard from '../Components/StockCard'
-import {Store} from '../store/store'
 
 function MenuWindow({store, setComponent}: any) {
 
@@ -23,7 +21,7 @@ function MenuWindow({store, setComponent}: any) {
                 </TouchableOpacity>
                 <Text style={titleText}>{store.currentRestaurant.name}</Text>
                 <TouchableOpacity onPress={() => setComponent('Cart')}>
-                    <Image style={titleButtonCart} source={require('../../assets/myIcons/cart-28.png')}/>
+                    <Image source={require('../../assets/myIcons/cart-28.png')}/>
                     {
                     store.cartCount !== 0
                      && 
@@ -36,14 +34,14 @@ function MenuWindow({store, setComponent}: any) {
             <ScrollView style={notes} horizontal={ true } showsHorizontalScrollIndicator={ false } >
                 {store.notes.map((value: any) => <Note note={value} key={value._id}/>)}
             </ScrollView> 
-            <ScrollView style={cards} showsVerticalScrollIndicator={ false } ref={ (ref) => store.setScrollRef(ref)}>
+            <ScrollView showsVerticalScrollIndicator={ false } ref={ (ref) => store.setScrollRef(ref)}>
                 {store.dishes.map((dish: any) => <DishCard dish={dish} key={dish._id}/>)}
             </ScrollView>
         </View>
     )
 }
 
-const { container, title, titleButtonBack, cartView, cartCount, titleText, titleButtonCart, stocks, notes, cards } = StyleSheet.create({
+const { container, title, titleButtonBack, cartView, cartCount, titleText, notes } = StyleSheet.create({
     container: {
         flex: 1,
     },
@@ -69,10 +67,8 @@ const { container, title, titleButtonBack, cartView, cartCount, titleText, title
         bottom: 15,
         borderRadius: 20,
         fontSize: 20,
-        // paddingHorizontal: 2,
         alignItems: 'center',
         justifyContent: 'center',
-        // paddingLeft: 7,
         paddingBottom: 1,
         fontWeight: '600',
         color: 'white',
@@ -87,11 +83,7 @@ const { container, title, titleButtonBack, cartView, cartCount, titleText, title
         fontSize: 28,
         fontWeight: '600',
     },
-    titleButtonCart: {
-
-    },
     stocks: {
-        // flexDirection: 'row',
         marginBottom: 20,
         marginLeft: 20,
         marginTop: 12,
@@ -100,10 +92,6 @@ const { container, title, titleButtonBack, cartView, cartCount, titleText, title
     notes: {
         height: 45,
         paddingLeft: 20,
-        // flexDirection: 'row',
-    },
-    cards: {
-        
     }
 })
 

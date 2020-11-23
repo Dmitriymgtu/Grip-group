@@ -1,9 +1,7 @@
 import { inject } from 'mobx-react'
 import { observer } from 'mobx-react-lite'
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, TextInput, Keyboard } from 'react-native'
-import { Store } from '../store/store'
-import OrderView from '../screens/OrderView'
+import { View, Text, StyleSheet, TextInput } from 'react-native'
 
 
 function Field(props: any) {
