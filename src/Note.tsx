@@ -8,18 +8,6 @@ import { observer } from 'mobx-react-lite';
 
 function Note(props: any) {
 
-  const fetchFonts = () => Font.loadAsync({'Montserrat': require('../assets/fonts/Montserrat-Regular.ttf')})
-
-  const [dataLoaded, setDataLoaded] = useState(false)
-
-  if (!dataLoaded) 
-    return (
-      <AppLoading 
-        startAsync={fetchFonts}
-        onFinish={() => setDataLoaded(true)}
-      />
-    )
-
   const onClick = () => {
     if (props.note.dishX)
       props.store.setScroll({x: props.note.dishX, y: props.note.dishY})

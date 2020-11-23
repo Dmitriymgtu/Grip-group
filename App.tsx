@@ -1,6 +1,6 @@
 import React from 'react';
 import store from './src/store/store'
-import { observer, Provider } from 'mobx-react'
+import { Provider } from 'mobx-react'
 import AppView from './AppView';
 
 function App() {
