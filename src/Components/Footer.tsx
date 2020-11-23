@@ -8,7 +8,7 @@ import { Store } from '../store/store';
 function Footer(props: any) {
 
   const { store, component, setComponent } = props
-  const fetchFonts = () => Font.loadAsync({'Montserrat': require('../assets/fonts/Montserrat-Regular.ttf')})
+  const fetchFonts = () => Font.loadAsync({'Montserrat': require('../../assets/fonts/Montserrat-Regular.ttf')})
 
   const [dataLoaded, setDataLoaded] = useState(false)
   
@@ -25,29 +25,28 @@ function Footer(props: any) {
         setComponent('Profile')
       else
         setComponent('Auth-number')
-
     } 
 
   
   return (
     <View style={styles.footer}>
       <TouchableOpacity style={{...styles.footerButton}} onPress={() => setComponent('Main')} activeOpacity={1}>
-        <ImageBackground style={styles.image} source={require('../assets/footerIcons/eatIcon-32px.png')}/>
+        <ImageBackground style={styles.image} source={require('../../assets/footerIcons/eatIcon-32px.png')}/>
         <Text style={component === 'Main' ? styles.activeButton : styles.passiveButton}>Главное</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.footerButton} onPress={() => setComponent('Cart')} activeOpacity={1}>
-        <ImageBackground style={styles.image} source={require('../assets/footerIcons/cartIcon-32px.png')}/>
+        <ImageBackground style={styles.image} source={require('../../assets/footerIcons/cartIcon-32px.png')}/>
         {store.cartCount !== 0 && <View style={styles.cartView}>
           <Text style={styles.cartCount}>{store.cartCount}</Text>
         </View>}
         <Text style={component === 'Cart' ? styles.activeButton : styles.passiveButton}>Корзина</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.footerButton} onPress={() => setComponent('Order')} activeOpacity={1}>
-        <ImageBackground style={styles.image} source={require('../assets/footerIcons/orderIcon-32px.png')}/>
+        <ImageBackground style={styles.image} source={require('../../assets/footerIcons/orderIcon-32px.png')}/>
         <Text style={component === 'Order' ? styles.activeButton : styles.passiveButton}>Заказ</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.footerButton} onPress={setUser} activeOpacity={1}>
-        <ImageBackground style={styles.image} source={require('../assets/footerIcons/profileIcon-32px.png')}/>
+        <ImageBackground style={styles.image} source={require('../../assets/footerIcons/profileIcon-32px.png')}/>
         <Text style={component === 'Profile' || component === 'Auth-number' || component === 'Auth-sms' ? styles.activeButton : styles.passiveButton}>Профиль</Text>
       </TouchableOpacity>      
     </View>

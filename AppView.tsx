@@ -6,7 +6,7 @@ import ProfileWindow from './src/screens/ProfileWindow';
 import MenuWindow from './src/screens/MenuWindow';
 import { inject, observer } from 'mobx-react'
 import OrderView from './src/screens/OrderView';
-import CartView from './src/CartWindow/CartView';
+import CartView from './src/screens/CartView';
 import AuthSms from './src/screens/AuthSms';
 import AuthNumber from './src/screens/AuthNumber';
 
