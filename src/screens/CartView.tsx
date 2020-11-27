@@ -4,7 +4,7 @@ import CartCard from '../Components/CartCard';
 import { ScrollView } from 'react-native-gesture-handler';
 import { inject, observer } from 'mobx-react';
 
-function CartView({store}: any) {
+const CartView: React.FC = ({store}: any) => {
 
     if (store.cart.dishes.length === 0) 
         return (<View style={noDishesContainer}>

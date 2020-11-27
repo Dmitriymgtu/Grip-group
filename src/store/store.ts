@@ -74,10 +74,10 @@ export class Store {
         if (foundedDish) foundedDish.count = counter
     }
 
-    pushCart = (dish:CartDish):void => {
-        this.cart.dishes.push(dish)
-        this.cart.cartCost += dish.count * dish.cost
-    } 
+    // pushCart = (dish:CartDish):void => {
+    //     this.cart.dishes.push(dish)
+    //     this.cart.cartCost += dish.count * dish.cost
+    // }
 
     setCart = (dish: CartDish, counter: number): void => {
         const dishes = this.cart.dishes

@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import ProfileField from '../Components/ProfileField'
 
-export default function ProfileWindow() {
+const ProfileWindow: React.FC = () => {
 
   const fields = [
       {id: 1, title: 'Мои заказы', path: require('../assets/myIcons/myOrders.png')},
@@ -26,3 +26,5 @@ const { container, profileName } = StyleSheet.create({
       marginBottom: 53
     }
 });
+
+export default ProfileWindow

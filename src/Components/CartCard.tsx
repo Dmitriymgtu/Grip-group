@@ -1,27 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import * as Font from 'expo-font';
-import { AppLoading } from 'expo';
-import { observer } from 'mobx-react-lite';
-import { inject } from 'mobx-react';
+import React, { useEffect, useState } from 'react'
+import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { observer } from 'mobx-react-lite'
+import { inject } from 'mobx-react'
 
-function CartCard(props: any) {
+const CartCard: React.FC<any> = (props: any) => {
     const [counter, setCounter] = useState(props.dish.count | 0)
-    const fetchFonts = () => Font.loadAsync({'Montserrat': require('../assets/fonts/Montserrat-Regular.ttf')})
-
-    const [dataLoaded, setDataLoaded] = useState(false)
 
     useEffect(() => {
       props.store.setDishCount(props.dish, counter)
       props.store.setCart(props.dish, counter)
     }, [counter])
-
-    if (!dataLoaded) 
-        return (
-        <AppLoading 
-            startAsync={fetchFonts}
-            onFinish={() => setDataLoaded(true)}
-        />)
 
     return (
       <View style={dish}>

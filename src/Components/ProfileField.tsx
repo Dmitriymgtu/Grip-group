@@ -1,22 +1,7 @@
-import React, { useState } from 'react';
-import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import * as Font from 'expo-font';
-import { AppLoading } from 'expo';
+import React from 'react'
+import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 
-export default function ProfileField(props: any) {
-
-  const fetchFonts = () => Font.loadAsync({'Montserrat': require('../assets/fonts/Montserrat-Regular.ttf')})
-
-  const [dataLoaded, setDataLoaded] = useState(false)
-
-  if (!dataLoaded) 
-    return (
-      <AppLoading 
-        startAsync={fetchFonts}
-        onFinish={() => setDataLoaded(true)}
-      />
-    )
-  
+const ProfileField: React.FC<any> = (props: any) => {
   return (
     <TouchableOpacity style={field} onPress={() => alert('Поле')} activeOpacity={1}>
         <View style={fieldRow}>
@@ -63,3 +48,5 @@ const { field, fieldRow, leftField, fieldIcon, fieldTitle, fieldArrow, fieldLine
       borderBottomColor: 'silver',
     },
 });
+
+export default ProfileField

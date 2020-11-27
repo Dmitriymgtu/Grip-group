@@ -4,7 +4,7 @@ import { inject } from 'mobx-react';
 import { observer } from 'mobx-react-lite';
 
 
-function Note(props: any) {
+const Note: React.FC<any> = (props: any) => {
 
   const onClick = () => {
     if (props.note.dishX)

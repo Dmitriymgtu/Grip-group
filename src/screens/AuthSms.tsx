@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Keyboard, ScrollView, StyleSheet, TextInput, View } from 'react-native';
 
 
-export default function AuthSms() {
+const AuthSms:React.FC = () => {
   const [sms, setSms] = useState('')
 
   return (
@@ -41,3 +41,5 @@ const { form, field } = StyleSheet.create({
     borderColor: 'silver'
   }
 });
+
+export default AuthSms

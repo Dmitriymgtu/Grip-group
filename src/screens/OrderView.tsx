@@ -1,11 +1,10 @@
-import { observer, inject } from 'mobx-react';
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, Keyboard} from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler';
+import { View, Text, ScrollView, StyleSheet, Keyboard} from 'react-native'
 import SwitchSelector from 'react-native-switch-selector';
+import { observer, inject } from 'mobx-react';
 import Field from '../Components/Field'
 
-function OrderView({store}:any) {
+const OrderView: React.FC = ({store}:any) => {
 
     const [horizontalFields] = useState([
         {id: 1, title: 'Кв/офис', value: store.order['Кв/офис']},
@@ -30,18 +29,18 @@ function OrderView({store}:any) {
                 </View>
                 <Field title='Комментарий к заказу' value={store.order['Комментарий к заказу']}/>
                 <Field title='Промокод' value={store.order['Промокод']}/>
-                <SwitchSelector style={ paymentMethod } 
-                                options={options} 
-                                initial={0} 
+                <SwitchSelector style={ paymentMethod }
+                                options={options}
+                                initial={0}
                                 onPress={(value) => console.log(value)}
                                 fontSize={19}
                                 buttonColor='white'
                                 backgroundColor='#DCDADA'
-                                hasPadding={true}  
-                                animationDuration={0}     
+                                hasPadding={true}
+                                animationDuration={0}
                                 textColor='#8C7F7F'
                                 height={54}
-                                selectedColor='black'         
+                                selectedColor='black'
                 />
             </View>
         </ScrollView>

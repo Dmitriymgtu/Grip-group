@@ -3,8 +3,7 @@ import { observer } from 'mobx-react-lite'
 import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native'
 
-
-function Field(props: any) {
+const Field: React.FC<any> = (props: any) => {
     const [field, setField] = useState(props.value)
 
     const titleType = ['Кв/офис', 'Домофон', 'Подъезд', 'Этаж']

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import { Keyboard, ScrollView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from 'react-native';
 
-export default function AuthNumber(props: any) {
+const AuthNumber:React.FC = (props: any) => {
   const [phone, setPhone] = useState('')
 
   function handlePhone(string: string): void { // +7 (xxx) xxx-xx-xx
@@ -44,7 +44,7 @@ export default function AuthNumber(props: any) {
     }
   }
 
-  async function sendSms() {
+  function sendSms(): void {
     props.setComponent('Auth-sms')
   }
 
@@ -122,3 +122,5 @@ const { form, field, link, border, rotate, button } = StyleSheet.create({
     color: '#595051'
   }
 });
+
+export default AuthNumber

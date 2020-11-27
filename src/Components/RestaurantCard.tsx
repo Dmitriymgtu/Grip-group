@@ -1,23 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ImageBackground, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import {inject, observer} from 'mobx-react'
-import * as Font from 'expo-font';
-import { AppLoading } from 'expo';
 import Note from './Note'
 
-function RestaurantCard(props: any) {
-
-  const fetchFonts = () => Font.loadAsync({'Montserrat': require('../assets/fonts/Montserrat-Regular.ttf')})
-
-  const [dataLoaded, setDataLoaded] = useState(false)
-
-  if (!dataLoaded) 
-    return (
-      <AppLoading 
-        startAsync={fetchFonts}
-        onFinish={() => setDataLoaded(true)}
-      />
-    )
+const RestaurantCard: React.FC<any> = (props: any) => {
   
   function onHandler() {
     props.setComponent('Restaurant')
@@ -26,6 +12,7 @@ function RestaurantCard(props: any) {
       props.store.clearPreviousRestaurant()
     }
   }
+
 
   return (
     <TouchableOpacity style={card} onPress={() => onHandler()} activeOpacity={1}>

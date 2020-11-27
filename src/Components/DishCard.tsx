@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Image, StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
-import * as Font from 'expo-font';
-import { AppLoading } from 'expo';
+import React, { useEffect, useState } from 'react'
+import { Image, StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native'
+import { AppLoading } from 'expo'
 import Note from './Note'
-import { inject } from 'mobx-react';
-import { observer } from 'mobx-react-lite';
+import { inject } from 'mobx-react'
+import { observer } from 'mobx-react-lite'
 
-function DishCard(props: any) {
+const DishCard: React.FC<any> = (props: any) => {
     const [counter, setCounter] = useState(props.dish.count | 0)
-    const fetchFonts = () => Font.loadAsync({'Montserrat': require('../assets/fonts/Montserrat-Regular.ttf')})
-
-    const [dataLoaded, setDataLoaded] = useState(false)
 
     useEffect(() => {
       props.store.setDishCount(props.dish, counter)
@@ -43,13 +39,6 @@ function DishCard(props: any) {
         confirm()
       else setCounter(prev => prev + 1)
     }
-
-    if (!dataLoaded) 
-        return (
-        <AppLoading 
-            startAsync={fetchFonts}
-            onFinish={() => setDataLoaded(true)}
-        />)
 
     const setDishes = (event: any): void => {
       props.store.setDishesWithLayouts({_id: props.dish._id, section: props.dish.section, ...event.nativeEvent.layout})

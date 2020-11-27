@@ -4,7 +4,7 @@ import { View , StyleSheet, ScrollView, Text, TouchableOpacity, Image} from 'rea
 import Note from '../Components/Note'
 import DishCard from '../Components/DishCard'
 
-function MenuWindow({store, setComponent}: any) {
+const MenuWindow: React.FC = ({store, setComponent}: any) => {
 
     return (
         <View style={ container }>

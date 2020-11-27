@@ -2,13 +2,12 @@ import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import AddressTitle from '../Components/AddressTitle'
 import RestaurantCard from '../Components/RestaurantCard'
-import { YellowBox } from 'react-native';
 import { inject } from 'mobx-react';
 import { observer } from 'mobx-react-lite';
 
 
-function Main(props: any) {
-  YellowBox.ignoreWarnings(['Remote debugger']);
+const Main: React.FC<any> = (props: any) => {
+
   return (
     <>
       <AddressTitle/>

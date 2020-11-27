@@ -1,23 +1,10 @@
-import React, { useState } from 'react';
-import { ImageBackground, StyleSheet, View, TouchableOpacity, Text } from 'react-native';
-import * as Font from 'expo-font';
-import { AppLoading } from 'expo';
-import { observer, inject} from 'mobx-react';
+import React from 'react'
+import { ImageBackground, StyleSheet, View, TouchableOpacity, Text } from 'react-native'
+import { observer, inject} from 'mobx-react'
 
-function Footer(props: any) {
+const Footer: React.FC = (props: any) => {
 
   const { store, component, setComponent } = props
-  const fetchFonts = () => Font.loadAsync({'Montserrat': require('../assets/fonts/Montserrat-Regular.ttf')})
-
-  const [dataLoaded, setDataLoaded] = useState(false)
-  
-  if (!dataLoaded) 
-    return (
-      <AppLoading 
-        startAsync={fetchFonts}
-        onFinish={() => setDataLoaded(true)}
-      />
-    )
 
     const setUser = () => {
       if (store.user) 
@@ -26,10 +13,9 @@ function Footer(props: any) {
         setComponent('Auth-number')
     } 
 
-  
   return (
     <View style={styles.footer}>
-      <TouchableOpacity style={{...styles.footerButton}} onPress={() => setComponent('Main')} activeOpacity={1}>
+      <TouchableOpacity style={styles.footerButton} onPress={() => setComponent('Main')} activeOpacity={1}>
         <ImageBackground style={styles.image} source={require('../assets/footerIcons/eatIcon-32px.png')}/>
         <Text style={component === 'Main' ? styles.activeButton : styles.passiveButton}>Главное</Text>
       </TouchableOpacity>

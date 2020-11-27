@@ -1,22 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import * as Font from 'expo-font';
-import { AppLoading } from 'expo';
 import Note from './Note'
 
-export default function AddressTitle() {
-
-  const fetchFonts = () => Font.loadAsync({'Montserrat': require('../assets/fonts/Montserrat-Regular.ttf')})
-
-  const [dataLoaded, setDataLoaded] = useState(false)
-
-  if (!dataLoaded) 
-    return (
-      <AppLoading 
-        startAsync={fetchFonts}
-        onFinish={() => setDataLoaded(true)}
-      />
-    )
+const AddressTitle: React.FC = () => {
 
   return (
     <View style={ addressContainer }>
@@ -51,3 +37,5 @@ const { addressContainer, addressTitle, addressTitleText } = StyleSheet.create({
   }
 
 });
+
+export default AddressTitle

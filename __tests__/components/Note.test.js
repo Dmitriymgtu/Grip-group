@@ -1,11 +1,11 @@
-import { Provider } from 'mobx-react';
-import React from 'react';
-import renderer from 'react-test-renderer';
+import { Provider } from 'mobx-react'
+import React from 'react'
+import renderer from 'react-test-renderer'
 
-import Note from '../../src/Components/Note';
-import { Store } from '../../src/store/store';
+import Note from '../../src/Components/Note'
+import { Store } from '../../src/store/store'
 
-describe('<Note />', () => {
+describe('Note:', () => {
 
   const store = new Store()
   const noteNode = note => renderer.create(
