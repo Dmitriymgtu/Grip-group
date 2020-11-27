@@ -7,7 +7,7 @@ import { inject } from 'mobx-react';
 
 function CartCard(props: any) {
     const [counter, setCounter] = useState(props.dish.count | 0)
-    const fetchFonts = () => Font.loadAsync({'Montserrat': require('../../assets/fonts/Montserrat-Regular.ttf')})
+    const fetchFonts = () => Font.loadAsync({'Montserrat': require('../assets/fonts/Montserrat-Regular.ttf')})
 
     const [dataLoaded, setDataLoaded] = useState(false)
 
@@ -25,7 +25,7 @@ function CartCard(props: any) {
 
     return (
       <View style={dish}>
-        <Image source={require('../../assets/myIcons/pazzo.jpg')} style={dishImage}/>
+        <Image source={require('../assets/myIcons/pazzo.jpg')} style={dishImage}/>
         <View style={dishInfo}>
           <View style={dishTitle}>
               <Text style={font16}>

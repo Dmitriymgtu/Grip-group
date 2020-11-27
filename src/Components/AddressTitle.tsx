@@ -6,7 +6,7 @@ import Note from './Note'
 
 export default function AddressTitle() {
 
-  const fetchFonts = () => Font.loadAsync({'Montserrat': require('../../assets/fonts/Montserrat-Regular.ttf')})
+  const fetchFonts = () => Font.loadAsync({'Montserrat': require('../assets/fonts/Montserrat-Regular.ttf')})
 
   const [dataLoaded, setDataLoaded] = useState(false)
 

@@ -5,7 +5,7 @@ import { AppLoading } from 'expo';
 
 export default function ProfileField(props: any) {
 
-  const fetchFonts = () => Font.loadAsync({'Montserrat': require('../../assets/fonts/Montserrat-Regular.ttf')})
+  const fetchFonts = () => Font.loadAsync({'Montserrat': require('../assets/fonts/Montserrat-Regular.ttf')})
 
   const [dataLoaded, setDataLoaded] = useState(false)
 
@@ -24,7 +24,7 @@ export default function ProfileField(props: any) {
             <Image source={props.path} style={fieldIcon}/>
             <Text style={fieldTitle}>{props.title}</Text>
           </View>
-          <Image source={require('../../assets/myIcons/rightArrow-24.png')} style={fieldArrow}/>
+          <Image source={require('../assets/myIcons/rightArrow-24.png')} style={fieldArrow}/>
         </View>
         <View style={fieldLine}/>
     </TouchableOpacity>

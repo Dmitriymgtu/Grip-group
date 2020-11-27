@@ -17,11 +17,11 @@ function MenuWindow({store, setComponent}: any) {
             </ScrollView> */}
             <View style={title}>
                 <TouchableOpacity onPress={() => setComponent('Main')}>
-                    <Image style={titleButtonBack} source={require('../../assets/myIcons/back.png')}/>
+                    <Image style={titleButtonBack} source={require('../assets/myIcons/back.png')}/>
                 </TouchableOpacity>
                 <Text style={titleText}>{store.currentRestaurant.name}</Text>
                 <TouchableOpacity onPress={() => setComponent('Cart')}>
-                    <Image source={require('../../assets/myIcons/cart-28.png')}/>
+                    <Image source={require('../assets/myIcons/cart-28.png')}/>
                     {
                     store.cartCount !== 0
                      && 

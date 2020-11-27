@@ -7,7 +7,7 @@ import Note from './Note'
 
 function RestaurantCard(props: any) {
 
-  const fetchFonts = () => Font.loadAsync({'Montserrat': require('../../assets/fonts/Montserrat-Regular.ttf')})
+  const fetchFonts = () => Font.loadAsync({'Montserrat': require('../assets/fonts/Montserrat-Regular.ttf')})
 
   const [dataLoaded, setDataLoaded] = useState(false)
 
@@ -29,7 +29,7 @@ function RestaurantCard(props: any) {
 
   return (
     <TouchableOpacity style={card} onPress={() => onHandler()} activeOpacity={1}>
-        <ImageBackground source={require('../../assets/myIcons/pazzo.jpg')} style={cardImage}/>
+        <ImageBackground source={require('../assets/myIcons/pazzo.jpg')} style={cardImage}/>
         <View>
           <Text style={cardTitle}>{props.restaurant.name}</Text>
           <View style={cardData}>

@@ -1,25 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import * as Font from 'expo-font';
-import { AppLoading } from 'expo';
 import CartCard from '../Components/CartCard';
 import { ScrollView } from 'react-native-gesture-handler';
 import { inject, observer } from 'mobx-react';
 
 function CartView({store}: any) {
-    const fetchFonts = () => Font.loadAsync({'Montserrat': require('../../assets/fonts/Montserrat-Regular.ttf')})
-
-    const [dataLoaded, setDataLoaded] = useState(false)
-
-    if (!dataLoaded) 
-        return (
-        <AppLoading 
-            startAsync={fetchFonts}
-            onFinish={() => setDataLoaded(true)}
-        />)
 
     if (store.cart.dishes.length === 0) 
-    return <View style={noDishesContainer}><Text style={noDishes}>Ваша корзина пуста!</Text></View>
+        return (<View style={noDishesContainer}>
+                    <Text style={noDishes}>Ваша корзина пуста!</Text>
+                </View>)
 
     const onHandler = () => {
         store.clearCart()
@@ -28,7 +18,7 @@ function CartView({store}: any) {
     return (
       <View style={container}>
             <TouchableOpacity onPress={onHandler}>
-                <Text style={clearBottom}>Очистить</Text>
+                <Text style={clearButton}>Очистить</Text>
             </TouchableOpacity>
             <Text style={title}>Корзина</Text>
             <ScrollView style={cards} showsVerticalScrollIndicator={ false } >
@@ -39,7 +29,7 @@ function CartView({store}: any) {
     );
 }
 
-const { noDishes, noDishesContainer, container, clearBottom, title, cards, total } = StyleSheet.create({
+const { noDishes, noDishesContainer, container, clearButton, title, cards, total } = StyleSheet.create({
     noDishes: {
         textAlign: 'center',
         fontFamily: "Montserrat",
@@ -53,7 +43,7 @@ const { noDishes, noDishesContainer, container, clearBottom, title, cards, total
     container: {
         marginHorizontal: 20,
     },
-    clearBottom: {
+    clearButton: {
         fontFamily: "Montserrat",
         fontWeight: "300",
         fontSize: 18,

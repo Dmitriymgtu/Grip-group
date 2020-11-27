@@ -8,7 +8,7 @@ import { observer } from 'mobx-react-lite';
 
 function DishCard(props: any) {
     const [counter, setCounter] = useState(props.dish.count | 0)
-    const fetchFonts = () => Font.loadAsync({'Montserrat': require('../../assets/fonts/Montserrat-Regular.ttf')})
+    const fetchFonts = () => Font.loadAsync({'Montserrat': require('../assets/fonts/Montserrat-Regular.ttf')})
 
     const [dataLoaded, setDataLoaded] = useState(false)
 
@@ -56,7 +56,7 @@ function DishCard(props: any) {
     }
     return (
         <TouchableOpacity style={dish} onPress={() => alert(props.dish.description)} onLayout={setDishes}>
-            <Image source={require('../../assets/myIcons/pazzo.jpg')} style={dishImage}/>
+            <Image source={require('../assets/myIcons/pazzo.jpg')} style={dishImage}/>
             <View style={dishInfo}>
               <Text style={dishTitle}>{props.dish.title}</Text>
               <View style={dishRow}>

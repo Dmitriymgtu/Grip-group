@@ -5,8 +5,8 @@ import ProfileField from '../Components/ProfileField'
 export default function ProfileWindow() {
 
   const fields = [
-      {id: 1, title: 'Мои заказы', path: require('../../assets/myIcons/myOrders.png')},
-      {id: 2, title: 'Мои данные', path: require('../../assets/myIcons/myData.png')},
+      {id: 1, title: 'Мои заказы', path: require('../assets/myIcons/myOrders.png')},
+      {id: 2, title: 'Мои данные', path: require('../assets/myIcons/myData.png')},
   ]  
   return (
     <View style={ container } >
