@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, ScrollView, StyleSheet, Keyboard} from 'react-native'
 import SwitchSelector from 'react-native-switch-selector';
 import { observer, inject } from 'mobx-react';
-import Field from '../Components/Field'
+import Field from '../components/Field'
 
 const OrderView: React.FC = ({store}:any) => {
 

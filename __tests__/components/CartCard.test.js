@@ -2,7 +2,7 @@ import { Provider } from 'mobx-react'
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import CartCard from '../../src/Components/CartCard'
+import CartCard from '../../src/components/CartCard'
 import { Store } from '../../src/store/store'
 
 describe('CartCard:', () => {

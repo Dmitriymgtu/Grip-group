@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import CartCard from '../Components/CartCard';
+import CartCard from '../components/CartCard';
 import { ScrollView } from 'react-native-gesture-handler';
 import { inject, observer } from 'mobx-react';
 

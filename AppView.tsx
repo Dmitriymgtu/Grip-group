@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Main from './src/screens/Main';
-import Footer from './src/Components/Footer';
+import Footer from './src/components/Footer';
 import ProfileWindow from './src/screens/ProfileWindow';
 import MenuWindow from './src/screens/MenuWindow';
 import { inject, observer } from 'mobx-react'

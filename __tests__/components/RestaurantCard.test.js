@@ -3,7 +3,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { Store } from '../../src/store/store'
 
-import RestaurantCard from '../../src/Components/RestaurantCard'
+import RestaurantCard from '../../src/components/RestaurantCard'
 
 describe('RestaurantCard:', () => {
   

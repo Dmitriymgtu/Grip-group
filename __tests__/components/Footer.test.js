@@ -3,7 +3,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { Store } from '../../src/store/store'
 
-import Footer from '../../src/Components/Footer'
+import Footer from '../../src/components/Footer'
 
 describe('Footer:', () => {
   

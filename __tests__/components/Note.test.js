@@ -2,7 +2,7 @@ import { Provider } from 'mobx-react'
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import Note from '../../src/Components/Note'
+import Note from '../../src/components/Note'
 import { Store } from '../../src/store/store'
 
 describe('Note:', () => {

@@ -2,7 +2,7 @@ import { Provider } from 'mobx-react'
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import AddressTitle from '../../src/Components/AddressTitle'
+import AddressTitle from '../../src/components/AddressTitle'
 import { Store } from '../../src/store/store'
 
 describe('AddressTitle:', () => {

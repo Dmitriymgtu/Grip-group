@@ -2,7 +2,7 @@ import { Provider } from 'mobx-react'
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import Field from '../../src/Components/Field'
+import Field from '../../src/components/Field'
 import { Store } from '../../src/store/store'
 
 describe('Field:', () => {

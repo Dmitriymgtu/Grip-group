@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import ProfileField from '../Components/ProfileField'
+import ProfileField from '../components/ProfileField'
 
 const ProfileWindow: React.FC = () => {
 

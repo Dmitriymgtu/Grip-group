@@ -3,7 +3,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { Store } from '../../src/store/store'
 
-import DishCard from '../../src/Components/DishCard'
+import DishCard from '../../src/components/DishCard'
 
 describe('DishCard:', () => {
   

@@ -1,6 +1,7 @@
 import {makeAutoObservable} from 'mobx';
 import { rests } from './restaurants';
 import { Dish, CartDish, Cart, Restaurant, CartRestaurant, DishLayout, MapType } from "./types"
+import {Ref} from "react";
 
 export class Store {
 
@@ -83,7 +84,23 @@ export class Store {
         const dishes = this.cart.dishes
         let foundedDish = dishes.find((value:CartDish) => value._id === dish._id)
 
-        this.cart.dishes = foundedDish ? (counter === 0 ? dishes.filter(value => value._id !== dish._id) : dishes.map(value => value._id === dish._id ? {...value, count: counter} : value)) : (counter !== 0 ? [...dishes, {...dish, count: counter}] : [...dishes])
+        this.cart.dishes = foundedDish
+          ?
+          (
+            counter === 0
+              ?
+              dishes.filter(value => value._id !== dish._id)
+              :
+              dishes.map(value => value._id === dish._id ? {...value, count: counter} : value)
+          )
+          :
+          (
+            counter !== 0
+              ?
+              [...dishes, {...dish, count: counter}]
+              :
+              [...dishes]
+          )
 
         let sum: number = 0
         this.cart.dishes.forEach(value => sum += value.cost * value.count)
@@ -108,11 +125,10 @@ export class Store {
     }
 
     setScroll = ({x ,y}: {x: number, y:number}): void => {
-        
         this.scrollRef.scrollTo({x, y, animated: true})
     }
 
-    setScrollRef = (ref: any): void => {
+    setScrollRef = (ref: Ref<any>): void => {
         this.scrollRef = ref
     }
     get notes(): any { 

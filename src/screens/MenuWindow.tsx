@@ -1,8 +1,8 @@
 import { inject, observer } from 'mobx-react';
 import React from 'react';
 import { View , StyleSheet, ScrollView, Text, TouchableOpacity, Image} from 'react-native'
-import Note from '../Components/Note'
-import DishCard from '../Components/DishCard'
+import Note from '../components/Note'
+import DishCard from '../components/DishCard'
 
 const MenuWindow: React.FC = ({store, setComponent}: any) => {
 

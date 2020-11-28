@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
-import AddressTitle from '../Components/AddressTitle'
-import RestaurantCard from '../Components/RestaurantCard'
+import AddressTitle from '../components/AddressTitle'
+import RestaurantCard from '../components/RestaurantCard'
 import { inject } from 'mobx-react';
 import { observer } from 'mobx-react-lite';
 
